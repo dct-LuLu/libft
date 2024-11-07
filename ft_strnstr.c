@@ -6,7 +6,7 @@
 /*   By: jaubry-- <jaubry--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 07:58:07 by jaubry--          #+#    #+#             */
-/*   Updated: 2024/08/27 14:05:04 by jaubry--         ###   ########.fr       */
+/*   Updated: 2024/11/06 19:03:27 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,17 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	size_t	j;
 
 	i = 0;
-	while ((big[i]) && (i < len))
+	if (little[0] == '\0')
+		return ((char *)big);
+	while (big[i] && (i < len))
 	{
 		j = 0;
-		while ((big[i + j] == little[j]) && (i + j < len))
+		while (little[j] && (little[j] == big[i + j]) && (i + j < len))
+		{
 			j++;
-		if (little[j] == '\0')
-			return (&((char *)(big))[i]);
+			if (!little[j])
+				return ((char *)&big[i]);
+		}
 		i++;
 	}
 	return (NULL);
@@ -32,10 +36,17 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 
 /*
 #include <stdio.h>
+#include <bsd/string.h>
 
 int	main(void)
 {
-	printf("'%s'\n", ft_strnstr("lorem ipsum dolor sit amet", "dolor", 15));
+	char	*haystack = "abcdefgh";//"teste";
+	char	*needle = "abc";
+	char	n = 2;
+
+	printf("big:\t'%s'\nlittle:\t'%s'\nn:\t%d\n\n", haystack, needle, n);
+	printf("ft_strnstr\t'%s'\n", ft_strnstr(haystack, needle, n));
+	printf("strnstr\t\t'%s'\n", strnstr(haystack, needle, n));
 	return (0);	
 }
 */

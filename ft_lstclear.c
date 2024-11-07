@@ -6,7 +6,7 @@
 /*   By: jaubry-- <jaubry--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 15:35:03 by jaubry--          #+#    #+#             */
-/*   Updated: 2024/10/22 16:49:47 by jaubry--         ###   ########.fr       */
+/*   Updated: 2024/11/07 14:38:43 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,11 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 		next = *lst;
 		while (next)
 		{
-			tmp = next;
-			next = next->next;
-			ft_lstdelone(tmp, del);
+			tmp = next->next;
+			ft_lstdelone(next, del);
+			next = tmp;
 		}
+		*lst = NULL;
 	}
 }
 
@@ -47,7 +48,7 @@ void	ft_lstprint(t_list *lst)
 
 void	rem(void *el)
 {
-	free((char *)el);
+	free(el);
 }
 
 int	main(void)
@@ -71,7 +72,8 @@ int	main(void)
 	ft_lstadd_back(&lst, ft_lstnew(t2));
 	ft_lstadd_back(&lst, ft_lstnew(t3));
 	ft_lstprint(lst);
-	ft_lstclear(&lst, &rem);
+	ft_lstclear(&(lst), &rem);
+	//ft_lstprint(lst);
 	return (0);
 }
 */

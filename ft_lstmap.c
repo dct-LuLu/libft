@@ -6,7 +6,7 @@
 /*   By: jaubry-- <jaubry--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 15:36:13 by jaubry--          #+#    #+#             */
-/*   Updated: 2024/10/22 17:18:39 by jaubry--         ###   ########.fr       */
+/*   Updated: 2024/11/07 17:35:59 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,58 +15,73 @@
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	t_list	*first;
+	t_list	*el;
+	void	*tmp;
 
-	if (!lst)
-		return (NULL);
+	first = NULL;
 	while (lst)
 	{
-		if (!first)
+		tmp = f(lst->content);
+		if (!tmp)
 		{
-			if (lst->content)
-				first = ft_lstnew(f(lst->content));
-			else
-				del(lst->content);
+			ft_lstclear(&first, del);
+			return (NULL);
 		}
-		else
+		el = ft_lstnew(tmp);
+		if (!el)
 		{
-			if (lst->content)
-				ft_lstadd_back(&first, ft_lstnew(f(lst->content)));
-			else
-				del(lst->content);
+			del(tmp);
+			ft_lstclear(&first, del);
+			return (NULL);
 		}
+		ft_lstadd_back(&first, el);
 		lst = lst->next;
 	}
 	return (first);
 }
 
 /*
-
 #include <stdio.h>
+
+void	*__ft_strlen(void *str)
+{
+	size_t	i;
+
+	i = 0;
+	while (((char *)str)[i])
+		i++;
+	return ((void *)i);
+}
 
 void	show(void *content)
 {
 	printf("%s\n", (char *)content);
 }
 
-void	*zero(void *str)
+void	show2(void *content)
 {
-	char	*j;
+	printf("%d\n", (int)content);
+}
 
-	j = ft_strdup((char *)str);
-	j[0] = '0';
-	return ("0");
+void	feur(void *content)
+{
+	(void)content;
 }
 
 int	main(void)
 {
 	t_list	*lst;
+	t_list	*new;
 
-	lst = ft_lstnew("1");
-	ft_lstadd_back(&lst, ft_lstnew("2"));
-	ft_lstadd_back(&lst, ft_lstnew("3"));
+	lst = ft_lstnew("ceci");
 	ft_lstiter(lst, &show);
 	printf("\n");
-	ft_lstiter(ft_lstmap(lst, &zero, &free), &show);
+	new = ft_lstmap(lst, &__ft_strlen, &free);
+	ft_lstiter(new, &show2);
+	//ft_lstdelone(lst, &free);
+	//free(lst->content);
+	free(lst);
+	ft_lstclear(&new, &feur);
 	return (0);
 }
 */

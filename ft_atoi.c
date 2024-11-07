@@ -6,7 +6,7 @@
 /*   By: jaubry-- <jaubry--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 08:14:46 by jaubry--          #+#    #+#             */
-/*   Updated: 2024/08/27 14:08:09 by jaubry--         ###   ########.fr       */
+/*   Updated: 2024/11/06 15:42:13 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,6 @@ int	ft_atoi(const char *str)
 	long long	num;
 	int			neg;
 
-	if (!str)
-		return (0);
 	neg = 1;
 	i = 0;
 	num = 0;
