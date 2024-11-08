@@ -6,69 +6,69 @@
 /*   By: jaubry-- <jaubry--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 07:20:30 by jaubry--          #+#    #+#             */
-/*   Updated: 2024/08/28 07:42:51 by jaubry--         ###   ########.fr       */
+/*   Updated: 2024/11/08 15:20:59 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	ft_splitlen(char const *s, char c)
+static size_t	ft_splitlen(char const *str, char c)
 {
 	size_t	i;
 	size_t	len;
-	int		in;
+	int		is_in;
 
 	i = 0;
-	in = 0;
+	is_in = 0;
 	len = 0;
-	while (s[i])
+	while (str[i])
 	{
-		if (s[i] != c)
+		if (str[i] != c)
 		{
-			if (!in)
+			if (!is_in)
 				len++;
-			in = 1;
+			is_in = 1;
 		}
 		else
-			in = 0;
+			is_in = 0;
 		i++;
 	}
 	return (len);
 }
 
-static size_t	ft_tokenlen(char const *s, char c)
+static size_t	ft_tokenlen(char const *str, char c)
 {
 	size_t	i;
 
 	i = 0;
-	while (s[i])
+	while (str[i])
 	{
-		if (s[i] == c)
+		if (str[i] == c)
 			break ;
 		i++;
 	}
 	return (i);
 }
 
-static char	*ft_strndup(char const *s, char c)
+static char	*ft_strndup(char const *str, char c)
 {
 	size_t	len;
 	size_t	i;
-	char	*r;
+	char	*dup;
 
 	i = 0;
-	len = ft_tokenlen(s, c);
-	r = malloc(sizeof(char) * (len + 1));
-	if (!r)
+	len = ft_tokenlen(str, c);
+	dup = malloc(sizeof(char) * (len + 1));
+	if (!dup)
 		return (NULL);
 	i = 0;
-	while (s[i] && (i < len))
+	while (str[i] && (i < len))
 	{
-		r[i] = s[i];
+		dup[i] = str[i];
 		i++;
 	}
-	r[i] = '\0';
-	return (r);
+	dup[i] = '\0';
+	return (dup);
 }
 
 static char	**ft_freesplit(char **split, size_t len)

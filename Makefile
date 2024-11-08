@@ -34,48 +34,50 @@ SRCS=		ft_atoi.c \
 			ft_strchr.c \
 			ft_strlcpy.c \
 			ft_strrchr.c
+ifdef BONUS
+SRCS :=		$(SRCS) \
+			ft_lstnew_bonus.c \
+			ft_lstadd_front_bonus.c \
+			ft_lstsize_bonus.c \
+			ft_lstlast_bonus.c \
+			ft_lstadd_back_bonus.c \
+			ft_lstdelone_bonus.c \
+			ft_lstclear_bonus.c \
+			ft_lstiter_bonus.c \
+			ft_lstmap_bonus.c
+endif
 
-BSRCS=		ft_lstnew.c \
-			ft_lstadd_front.c \
-			ft_lstsize.c \
-			ft_lstlast.c \
-			ft_lstadd_back.c \
-			ft_lstdelone.c \
-			ft_lstclear.c \
-			ft_lstiter.c \
-			ft_lstmap.c
+OBJDIR=		.
 
-OBJS=		$(SRCS:.c=.o)
-
-BOBJS=		$(BSRCS:.c=.o)
+OBJS=		$(addprefix $(OBJDIR)/, $(SRCS:.c=.o))
 
 INCLUDES=	libft.h
 
 CC=			cc
-
 CFLAGS=		-Wall -Wextra -Werror
 
 AR=			ar
-
 ARFLAGS=	rcs
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) $(INCLUDES)
 	$(AR) $(ARFLAGS) $@ $^
 
-bonus:	$(OBJS) $(BOBJS)
-	$(AR) $(ARFLAGS) $(NAME) $^
+bonus:
+	$(MAKE) BONUS=1 all
 
-%.o: %.c
-	$(CC) $(CFLAGS) -c $^ -o $@
+$(OBJDIR)/%.o: %.c
+	@mkdir -p $(OBJDIR)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJS) $(BOBJS) $(INCLUDES).gch
+	rm -rf $(INCLUDES).gch
 
 fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
+
 
 .PHONY: all clean fclean re
