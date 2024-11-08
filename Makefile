@@ -47,7 +47,7 @@ SRCS :=		$(SRCS) \
 			ft_lstmap_bonus.c
 endif
 
-OBJDIR=		.
+OBJDIR=		.obj
 
 OBJS=		$(addprefix $(OBJDIR)/, $(SRCS:.c=.o))
 
@@ -72,7 +72,7 @@ $(OBJDIR)/%.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -rf $(INCLUDES).gch
+	rm -rf $(OBJDIR) $(INCLUDES).gch
 
 fclean: clean
 	rm -f $(NAME)
