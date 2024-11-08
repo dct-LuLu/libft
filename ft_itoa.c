@@ -6,27 +6,27 @@
 /*   By: jaubry-- <jaubry--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 05:24:01 by jaubry--          #+#    #+#             */
-/*   Updated: 2024/08/28 05:48:55 by jaubry--         ###   ########.fr       */
+/*   Updated: 2024/11/08 15:18:17 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-static size_t	ft_itoalen(long int n)
+static size_t	ft_itoalen(long int nb)
 {
 	size_t	len;
 
-	if (!n)
+	if (!nb)
 		return (1);
 	len = 0;
-	if (n < 0)
+	if (nb < 0)
 	{
-		n *= -1;
+		nb *= -1;
 		len++;
 	}
-	while (n > 0)
+	while (nb > 0)
 	{
-		n /= 10;
+		nb /= 10;
 		len++;
 	}
 	return (len);
@@ -34,7 +34,7 @@ static size_t	ft_itoalen(long int n)
 
 char	*ft_itoa(int n)
 {
-	char		*r;
+	char		*str;
 	long int	num;
 	size_t		i;
 	size_t		len;
@@ -42,23 +42,23 @@ char	*ft_itoa(int n)
 	i = 0;
 	num = (long int)n;
 	len = ft_itoalen(num);
-	r = malloc(sizeof(char) * (len + 1));
-	if (!r)
+	str = malloc(sizeof(char) * (len + 1));
+	if (!str)
 		return (NULL);
-	r[0] = '0';
+	str[0] = '0';
 	if (num < 0)
 	{
-		r[0] = '-';
+		str[0] = '-';
 		num *= -1;
 	}
 	while (num > 0)
 	{
-		r[len - i - 1] = (num % 10) + '0';
+		str[len - i - 1] = (num % 10) + '0';
 		num /= 10;
 		i++;
 	}
-	r[len] = '\0';
-	return (r);
+	str[len] = '\0';
+	return (str);
 }
 
 /*
