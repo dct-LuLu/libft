@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaubry-- <jaubry--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 15:36:13 by jaubry--          #+#    #+#             */
-/*   Updated: 2024/11/07 17:35:59 by jaubry--         ###   ########.fr       */
+/*   Updated: 2024/11/14 07:56:34 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	t_list	*first;
-	t_list	*el;
+	t_list	*node;
 	void	*tmp;
 
 	first = NULL;
-	while (lst)
+	while (lst && f && del)
 	{
 		tmp = f(lst->content);
 		if (!tmp)
@@ -27,14 +27,14 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 			ft_lstclear(&first, del);
 			return (NULL);
 		}
-		el = ft_lstnew(tmp);
-		if (!el)
+		node = ft_lstnew(tmp);
+		if (!node)
 		{
 			del(tmp);
 			ft_lstclear(&first, del);
 			return (NULL);
 		}
-		ft_lstadd_back(&first, el);
+		ft_lstadd_back(&first, node);
 		lst = lst->next;
 	}
 	return (first);

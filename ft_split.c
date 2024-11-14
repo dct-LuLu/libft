@@ -6,20 +6,24 @@
 /*   By: jaubry-- <jaubry--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 07:20:30 by jaubry--          #+#    #+#             */
-/*   Updated: 2024/11/08 15:20:59 by jaubry--         ###   ########.fr       */
+/*   Updated: 2024/11/14 09:23:21 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdbool.h>
 #include "libft.h"
 
+/*
+	Function that counts each string there will be in the array of strings.
+*/
 static size_t	ft_splitlen(char const *str, char c)
 {
 	size_t	i;
 	size_t	len;
-	int		is_in;
+	bool	is_in;
 
 	i = 0;
-	is_in = 0;
+	is_in = false;
 	len = 0;
 	while (str[i])
 	{
@@ -27,10 +31,10 @@ static size_t	ft_splitlen(char const *str, char c)
 		{
 			if (!is_in)
 				len++;
-			is_in = 1;
+			is_in = true;
 		}
 		else
-			is_in = 0;
+			is_in = false;
 		i++;
 	}
 	return (len);
@@ -50,28 +54,18 @@ static size_t	ft_tokenlen(char const *str, char c)
 	return (i);
 }
 
-static char	*ft_strndup(char const *str, char c)
+static char	*ft_strndup(char const *str, size_t n)
 {
-	size_t	len;
-	size_t	i;
 	char	*dup;
 
-	i = 0;
-	len = ft_tokenlen(str, c);
-	dup = malloc(sizeof(char) * (len + 1));
+	dup = ft_calloc(sizeof(char), (n + 1));
 	if (!dup)
 		return (NULL);
-	i = 0;
-	while (str[i] && (i < len))
-	{
-		dup[i] = str[i];
-		i++;
-	}
-	dup[i] = '\0';
+	ft_memcpy(dup, str, n);
 	return (dup);
 }
 
-static char	**ft_freesplit(char **split, size_t len)
+static void	ft_freesplit(char **split, size_t len)
 {
 	unsigned int	i;
 
@@ -82,35 +76,33 @@ static char	**ft_freesplit(char **split, size_t len)
 		i++;
 	}
 	free(split);
-	return (NULL);
 }
 
 char	**ft_split(char const *s, char c)
 {
 	size_t	i;
 	size_t	j;
-	size_t	splitlen;
+	size_t	len;
+	size_t	token_len;
 	char	**split;
 
 	i = 0;
 	j = 0;
-	splitlen = ft_splitlen(s, c);
-	split = malloc(sizeof(char *) * (splitlen + 1));
-	if (!split)
-		return (NULL);
-	while (i < ft_strlen(s))
+	len = ft_strlen(s);
+	split = ft_calloc(sizeof(char *), (ft_splitlen(s, c) + 1));
+	while ((i < len) && split)
 	{
 		if (s[i] != c)
 		{
-			split[j] = ft_strndup(&s[i], c);
+			token_len = ft_tokenlen(s + i, c);
+			split[j] = ft_strndup(s + i, token_len);
 			if (!split[j])
-				return (ft_freesplit(split, j));
-			i += ft_tokenlen(&s[i], c);
+				return (ft_freesplit(split, j), NULL);
+			i += token_len;
 			j++;
 		}
 		i++;
 	}
-	split[splitlen] = 0;
 	return (split);
 }
 

@@ -6,13 +6,14 @@
 /*   By: jaubry-- <jaubry--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 06:50:09 by jaubry--          #+#    #+#             */
-/*   Updated: 2024/08/28 07:06:13 by jaubry--         ###   ########.fr       */
+/*   Updated: 2024/11/14 10:10:46 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdbool.h>
 #include "libft.h"
 
-static int	ft_in(const char *set, const char c)
+static bool	ft_in(const char *set, const char c)
 {
 	size_t	i;
 
@@ -20,10 +21,10 @@ static int	ft_in(const char *set, const char c)
 	while (set[i])
 	{
 		if (set[i] == c)
-			return (1);
+			return (true);
 		i++;
 	}
-	return (0);
+	return (false);
 }
 
 static size_t	ft_trimlen(char const *s1, char const *set)
@@ -65,7 +66,7 @@ char	*ft_strtrim(const char *s1, const char *set)
 	i = 0;
 	start = ft_trimstart(s1, set);
 	trimlen = ft_trimlen(start, set);
-	r = malloc(sizeof(char) * (trimlen + 1));
+	r = ft_calloc(sizeof(char), (trimlen + 1));
 	if (!r)
 		return (NULL);
 	while (i < trimlen)
@@ -73,7 +74,6 @@ char	*ft_strtrim(const char *s1, const char *set)
 		r[i] = start[i];
 		i++;
 	}
-	r[trimlen] = '\0';
 	return (r);
 }
 

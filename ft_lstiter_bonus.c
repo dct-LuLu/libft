@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   ft_lstiter_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaubry-- <jaubry--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 15:35:40 by jaubry--          #+#    #+#             */
-/*   Updated: 2024/09/03 16:54:43 by jaubry--         ###   ########.fr       */
+/*   Updated: 2024/11/14 07:53:23 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,10 @@
 
 void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	t_list	*next;
-
-	next = lst;
-	while (next)
+	while (lst && f)
 	{
-		f(next->content);
-		next = next->next;
+		f(lst->content);
+		lst = lst->next;
 	}
 }
 

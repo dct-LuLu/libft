@@ -6,22 +6,15 @@
 /*   By: jaubry-- <jaubry--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 07:09:13 by jaubry--          #+#    #+#             */
-/*   Updated: 2024/11/05 16:56:04 by jaubry--         ###   ########.fr       */
+/*   Updated: 2024/11/14 07:31:21 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "libft.h"
 
 void	ft_bzero(void *s, size_t n)
 {
-	size_t	i;
-
-	i = 0;
-	while (i < n)
-	{
-		((unsigned char *)(s))[i] = 0;
-		i++;
-	}
+	ft_memset(s, 0, n);
 }
 
 /*
