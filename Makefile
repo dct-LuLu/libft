@@ -52,6 +52,7 @@ OBJDIR=		.obj
 OBJS=		$(addprefix $(OBJDIR)/, $(SRCS:.c=.o))
 
 INCLUDES=	libft.h
+MAKEFILE=	Makefile
 
 CC=			cc
 CFLAGS=		-Wall -Wextra -Werror
@@ -61,7 +62,7 @@ ARFLAGS=	rcs
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(INCLUDES)
+$(NAME): $(OBJS) $(INCLUDES) $(MAKEFILE)
 	$(AR) $(ARFLAGS) $@ $^
 
 bonus:
