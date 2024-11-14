@@ -6,7 +6,7 @@
 /*   By: jaubry-- <jaubry--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 06:19:20 by jaubry--          #+#    #+#             */
-/*   Updated: 2024/11/06 15:27:32 by jaubry--         ###   ########.fr       */
+/*   Updated: 2024/11/14 10:22:28 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,28 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*r;
+	char	*substr;
+	size_t	s_len;
 	size_t	i;
 
-	i = 0;
-	if (start >= ft_strlen(s))
-		r = malloc(sizeof(char));
-	else if (start + len > ft_strlen(s))
-		r = malloc(sizeof(char) * (ft_strlen(&s[start]) + 1));
-	else
-		r = malloc(sizeof(char) * (len + 1));
-	if (!r)
+	if (!s)
 		return (NULL);
-	while ((i < len) && (start < ft_strlen(s)) && s[start + i])
+	i = 0;
+	s_len = ft_strlen(s);
+	if (start >= s_len)
+		substr = ft_calloc(sizeof(char), 1);
+	else if (start + len > s_len)
+		substr = ft_calloc(sizeof(char), (ft_strlen(s + start) + 1));
+	else
+		substr = ft_calloc(sizeof(char), (len + 1));
+	if (!substr)
+		return (NULL);
+	while ((i < len) && (start < s_len) && s[start + i])
 	{
-		r[i] = s[start + i];
+		substr[i] = s[start + i];
 		i++;
 	}
-	r[i] = '\0';
-	return (r);
+	return (substr);
 }
 
 /*

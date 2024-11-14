@@ -6,16 +6,15 @@
 /*   By: jaubry-- <jaubry--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 07:12:58 by jaubry--          #+#    #+#             */
-/*   Updated: 2024/11/06 14:57:29 by jaubry--         ###   ########.fr       */
+/*   Updated: 2024/11/14 07:59:08 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
 #include "libft.h"
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	unsigned int		i;
+	size_t	i;
 
 	if (dest || src)
 	{

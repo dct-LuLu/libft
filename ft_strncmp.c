@@ -6,11 +6,11 @@
 /*   By: jaubry-- <jaubry--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 07:42:52 by jaubry--          #+#    #+#             */
-/*   Updated: 2024/08/26 13:35:00 by jaubry--         ###   ########.fr       */
+/*   Updated: 2024/11/14 09:56:32 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include <stddef.h>
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {

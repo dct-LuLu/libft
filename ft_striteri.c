@@ -6,16 +6,18 @@
 /*   By: jaubry-- <jaubry--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 05:39:14 by jaubry--          #+#    #+#             */
-/*   Updated: 2024/08/21 05:40:21 by jaubry--         ###   ########.fr       */
+/*   Updated: 2024/11/14 09:44:53 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stddef.h>
+
 void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	unsigned int	i;
+	size_t	i;
 
 	i = 0;
-	while (s[i])
+	while (f && s[i])
 	{
 		f(i, &s[i]);
 		i++;

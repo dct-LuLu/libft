@@ -6,7 +6,7 @@
 /*   By: jaubry-- <jaubry--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 05:35:07 by jaubry--          #+#    #+#             */
-/*   Updated: 2024/08/28 06:45:32 by jaubry--         ###   ########.fr       */
+/*   Updated: 2024/11/14 09:50:24 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,11 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	size_t	i;
 	size_t	len;
 
+	if (!f)
+		return (NULL);
 	i = 0;
 	len = ft_strlen(s);
-	r = malloc(sizeof(char) * (len + 1));
+	r = ft_calloc(sizeof(char), (len + 1));
 	if (!r)
 		return (NULL);
 	while (i < len)
@@ -28,7 +30,6 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 		r[i] = f(i, s[i]);
 		i++;
 	}
-	r[len] = '\0';
 	return (r);
 }
 
