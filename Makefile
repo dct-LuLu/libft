@@ -48,17 +48,21 @@ SRCS :=		$(SRCS) \
 endif
 
 OBJDIR=		.obj
-
 OBJS=		$(addprefix $(OBJDIR)/, $(SRCS:.c=.o))
+
+DEPDIR=		.dep
+DEPS=		$(addprefix $(DEPDIR)/, $(SRCS:.c=.d))
 
 INCLUDES=	libft.h
 MAKEFILE=	Makefile
 
 CC=			cc
 CFLAGS=		-Wall -Wextra -Werror
+DEPFLAGS=	-MMD -MP -MF
 
 AR=			ar
 ARFLAGS=	rcs
+
 
 all: $(NAME)
 
@@ -68,17 +72,20 @@ $(NAME): $(OBJS) $(INCLUDES) $(MAKEFILE)
 bonus:
 	$(MAKE) BONUS=1 all
 
-$(OBJDIR)/%.o: %.c
-	@mkdir -p $(OBJDIR)
-	$(CC) $(CFLAGS) -c $< -o $@
+$(OBJDIR)/%.o: %.c | $(OBJDIR) $(DEPDIR)
+	$(CC) $(CFLAGS) $(DEPFLAGS) $(DEPDIR)/$*.d -c $< -o $@
+
+$(OBJDIR) $(DEPDIR):
+	@mkdir -p $(OBJDIR) $(DEPDIR)
 
 clean:
-	rm -rf $(OBJDIR) $(INCLUDES).gch
+	rm -rf $(OBJDIR) $(DEPDIR) $(INCLUDES).gch
 
 fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
 
+-include $(DEPS)
 
 .PHONY: all clean fclean re
