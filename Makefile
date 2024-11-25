@@ -33,9 +33,8 @@ SRCS=		ft_atoi.c \
 			ft_putchar_fd.c \
 			ft_strchr.c \
 			ft_strlcpy.c \
-			ft_strrchr.c
-ifdef BONUS
-SRCS :=		$(SRCS) \
+			ft_strrchr.c \
+			strr_utils.c \
 			ft_lstnew_bonus.c \
 			ft_lstadd_front_bonus.c \
 			ft_lstsize_bonus.c \
@@ -45,7 +44,6 @@ SRCS :=		$(SRCS) \
 			ft_lstclear_bonus.c \
 			ft_lstiter_bonus.c \
 			ft_lstmap_bonus.c
-endif
 
 OBJDIR=		.obj
 
@@ -62,15 +60,14 @@ ARFLAGS=	rcs
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(INCLUDES) $(MAKEFILE)
+$(NAME): $(OBJS) | $(INCLUDES) $(MAKEFILE)
 	$(AR) $(ARFLAGS) $@ $^
 
-bonus:
-	$(MAKE) BONUS=1 all
-
-$(OBJDIR)/%.o: %.c
-	@mkdir -p $(OBJDIR)
+$(OBJDIR)/%.o: %.c | $(OBJDIR)
 	$(CC) $(CFLAGS) -c $< -o $@
+
+$(OBJDIR):
+	@mkdir -p $(OBJDIR)
 
 clean:
 	rm -rf $(OBJDIR) $(INCLUDES).gch
