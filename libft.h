@@ -6,7 +6,7 @@
 /*   By: jaubry-- <jaubry--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 07:36:56 by jaubry--          #+#    #+#             */
-/*   Updated: 2024/09/03 15:29:48 by jaubry--         ###   ########.fr       */
+/*   Updated: 2024/11/25 20:24:29 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,5 +106,13 @@ void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+int		ratoi(const char *str);
+
+bool	check_flow(char *str, int ret);
+
+size_t	ft_strrlen(char **strs);
+
+void	free_strr(char **strs);
 
 #endif
