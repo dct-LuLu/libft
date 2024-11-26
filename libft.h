@@ -6,7 +6,7 @@
 /*   By: jaubry-- <jaubry--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 07:36:56 by jaubry--          #+#    #+#             */
-/*   Updated: 2024/11/25 20:24:29 by jaubry--         ###   ########.fr       */
+/*   Updated: 2024/11/27 00:09:51 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIBFT_H
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdbool.h>
 
 typedef struct s_list
 {
@@ -114,5 +115,7 @@ bool	check_flow(char *str, int ret);
 size_t	ft_strrlen(char **strs);
 
 void	free_strr(char **strs);
+
+int		ft_printf(const char *format, ...);
 
 #endif
