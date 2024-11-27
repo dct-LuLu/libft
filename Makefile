@@ -1,7 +1,41 @@
-NAME		= libft.a
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jaubry-- <jaubry--@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/11/27 01:19:17 by jaubry--          #+#    #+#              #
+#    Updated: 2024/11/27 01:34:37 by jaubry--         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+# Directories
+SRCDIR		= src
 OBJDIR		= .obj
-PRINTF_DIR	= ft_printf
+DEPDIR		= .dep
+INCDIR		= include
+PRINTF_DIR	= $(SRCDIR)/ft_printf
 HANDL_DIR	= $(PRINTF_DIR)/handlers
+
+# Output
+NAME		= libft.a
+
+# Compiler and flags
+CC			= cc
+CFLAGS		= -Wall -Wextra -Werror -MMD -MP
+DFLAGS		= -MMD -MP -MF $(DEPDIR)/$*.d
+IFLAGS		= -I$(INCDIR)
+CF			= $(CC) $(CFLAGS) $(IFLAGS) $(DFLAGS)
+
+AR			= ar
+ARFLAGS		= rcs
+
+# VPATH
+vpath %.c $(SRCDIR) $(PRINTF_DIR) $(HANDL_DIR)
+vpath %.h $(INCDIR)
+vpath %.o $(OBJDIR)
+vpath %.d $(DEPDIR)
 
 # Regular libft sources
 SRCS		= ft_atoi.c ft_isascii.c ft_memcmp.c ft_putendl_fd.c \
@@ -19,34 +53,64 @@ SRCS		= ft_atoi.c ft_isascii.c ft_memcmp.c ft_putendl_fd.c \
 
 # Printf sources
 PRINTF_SRCS	= ft_handlers_utils.c ft_put_hex.c ft_putnbr.c write_utils.c
-PRINTF_SRCS	:=$(addprefix $(HANDL_DIR)/, $(PRINTF_SRCS)) \
-			  $(PRINTF_DIR)/ft_printf.c
+PRINTF_SRCS	:= $(addprefix $(HANDL_DIR)/, $(PRINTF_SRCS)) \
+			   $(PRINTF_DIR)/ft_printf.c
 
-SRCS		:=$(SRCS) $(PRINTF_SRCS)
-OBJS		= $(addprefix $(OBJDIR)/, $(SRCS:.c=.o))
-INCLUDES	= libft.h $(HANDL_DIR)/ft_handlers.h
+SRCS		+= $(PRINTF_SRCS)
 
-CC			= cc
-CFLAGS		= -Wall -Wextra -Werror
-IFLAGS		= -I. -I$(PRINTF_DIR) -I$(HANDL_DIR)
-AR			= ar
-ARFLAGS		= rcs
+OBJS		= $(addprefix $(OBJDIR)/, $(notdir $(SRCS:.c=.o)))
+DEPS		= $(addprefix $(DEPDIR)/, $(notdir $(SRCS:.o=.d)))
+INCLUDES	= libft.h ft_handlers.h
+
+# Colors and formatting
+GREEN		= \e[1;32m
+BLUE		= \e[1;34m
+RED			= \e[1;31m
+YELLOW		= \e[1;33m
+PURPLE		= \e[1;35m
+UNDERLINE	= \e[4m
+BOLD		= \e[1m
+RESET		= \e[0m
+
 
 all: $(NAME)
 
-$(NAME): $(OBJS) | $(INCLUDES)
-	$(AR) $(ARFLAGS) $@ $^
+$(NAME): $(OBJS)
+	@echo -e "$(BLUE)Creating library $(UNDERLINE)$(NAME)$(RESET)$(BLUE)...$(RESET)"
+	@$(AR) $(ARFLAGS) $@ $^
+	@echo -e "$(GREEN)$(BOLD)✓ Library $(UNDERLINE)$(NAME)$(RESET)$(GREEN)$(BOLD) successfully created!$(RESET)"
 
-$(OBJDIR)/%.o: %.c
-	@mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
+$(OBJDIR)/%.o: %.c | $(OBJDIR) $(DEPDIR)
+	@echo -e "$(PURPLE)➜ Compiling $(UNDERLINE)$<$(RESET)$(PURPLE)$(RESET)"
+	@$(CF) -c $< -o $@
+
+$(OBJDIR) $(DEPDIR):
+	@echo -e "$(BLUE)Creating directory $(UNDERLINE)$@$(RESET)$(BLUE)$(RESET)"
+	@mkdir -p $@
+
+debug: CFLAGS += -g3
+debug:
+	@echo -e "$(YELLOW)$(BOLD)⚠ Building in debug mode...$(RESET)"
+	@$(MAKE) -s re
+	@echo -e "$(YELLOW)$(BOLD)✓ Debug build complete$(RESET)"
+
+help:
+	@echo "Available targets:"
+	@echo "  all     : Build the library"
+	@echo "  clean   : Remove object files"
+	@echo "  fclean  : Remove object files and library"
+	@echo "  re      : Rebuild everything"
 
 clean:
-	rm -rf $(OBJDIR) $(INCLUDES:.h=.h.gch)
+	@echo -e "$(RED)Cleaning object files from $(UNDERLINE)$(OBJDIR)$(RESET)$(RED) and $(UNDERLINE)$(DEPDIR)$(RESET)$(RED)$(RESET)"
+	@rm -rf $(OBJDIR) $(DEPDIR)
 
 fclean: clean
-	rm -f $(NAME)
+	@echo -e "$(RED)Removing library $(UNDERLINE)$(NAME)$(RESET)$(RED)$(RESET)"
+	@rm -f $(NAME)
 
 re: fclean all
 
-.PHONY: all clean fclean re
+-include $(DEPS)
+
+.PHONY: all clean fclean re debug help
