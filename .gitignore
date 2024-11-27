@@ -1,4 +1,4 @@
 .obj
+.dep
 a.out
-*.o
-*.a
+libft.a
