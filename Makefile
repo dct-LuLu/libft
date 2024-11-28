@@ -6,9 +6,18 @@
 #    By: jaubry-- <jaubry--@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/27 01:19:17 by jaubry--          #+#    #+#              #
-#    Updated: 2024/11/27 01:34:37 by jaubry--         ###   ########.fr        #
+#    Updated: 2024/11/27 02:08:00 by jaubry--         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+# Colors and formatting
+GREEN		= \e[1;32m
+BLUE		= \e[1;34m
+RED			= \e[1;31m
+YELLOW		= \e[1;33m
+PURPLE		= \e[1;35m
+UNDERLINE	= \e[4m
+BOLD		= \e[1m
+RESET		= \e[0m
 
 # Directories
 SRCDIR		= src
@@ -23,7 +32,7 @@ NAME		= libft.a
 
 # Compiler and flags
 CC			= cc
-CFLAGS		= -Wall -Wextra -Werror -MMD -MP
+CFLAGS		= -Wall -Wextra -Werror
 DFLAGS		= -MMD -MP -MF $(DEPDIR)/$*.d
 IFLAGS		= -I$(INCDIR)
 CF			= $(CC) $(CFLAGS) $(IFLAGS) $(DFLAGS)
@@ -62,15 +71,6 @@ OBJS		= $(addprefix $(OBJDIR)/, $(notdir $(SRCS:.c=.o)))
 DEPS		= $(addprefix $(DEPDIR)/, $(notdir $(SRCS:.o=.d)))
 INCLUDES	= libft.h ft_handlers.h
 
-# Colors and formatting
-GREEN		= \e[1;32m
-BLUE		= \e[1;34m
-RED			= \e[1;31m
-YELLOW		= \e[1;33m
-PURPLE		= \e[1;35m
-UNDERLINE	= \e[4m
-BOLD		= \e[1m
-RESET		= \e[0m
 
 
 all: $(NAME)
@@ -81,18 +81,18 @@ $(NAME): $(OBJS)
 	@echo -e "$(GREEN)$(BOLD)✓ Library $(UNDERLINE)$(NAME)$(RESET)$(GREEN)$(BOLD) successfully created!$(RESET)"
 
 $(OBJDIR)/%.o: %.c | $(OBJDIR) $(DEPDIR)
-	@echo -e "$(PURPLE)➜ Compiling $(UNDERLINE)$<$(RESET)$(PURPLE)$(RESET)"
+	@echo -e "$(PURPLE)➜ Compiling $(UNDERLINE)libft/$<$(RESET)"
 	@$(CF) -c $< -o $@
 
 $(OBJDIR) $(DEPDIR):
-	@echo -e "$(BLUE)Creating directory $(UNDERLINE)$@$(RESET)$(BLUE)$(RESET)"
+	@echo -e "$(BLUE)Creating directory $(UNDERLINE)libft/$@$(RESET)"
 	@mkdir -p $@
 
 debug: CFLAGS += -g3
 debug:
-	@echo -e "$(YELLOW)$(BOLD)⚠ Building in debug mode...$(RESET)"
-	@$(MAKE) -s re
-	@echo -e "$(YELLOW)$(BOLD)✓ Debug build complete$(RESET)"
+	@echo -e "$(YELLOW)$(BOLD)⚠ Building $(NAME) in debug mode...$(RESET)"
+	@$(MAKE) -s -B
+	@echo -e "$(YELLOW)$(BOLD)✓ $(NAME) debug build complete$(RESET)"
 
 help:
 	@echo "Available targets:"
@@ -102,11 +102,11 @@ help:
 	@echo "  re      : Rebuild everything"
 
 clean:
-	@echo -e "$(RED)Cleaning object files from $(UNDERLINE)$(OBJDIR)$(RESET)$(RED) and $(UNDERLINE)$(DEPDIR)$(RESET)$(RED)$(RESET)"
+	@echo -e "$(RED)Cleaning $(UNDERLINE)$(NAME)$(RESET)$(RED) object files from $(UNDERLINE)$(OBJDIR)$(RESET)$(RED) and $(UNDERLINE)$(DEPDIR)$(RESET)"
 	@rm -rf $(OBJDIR) $(DEPDIR)
 
 fclean: clean
-	@echo -e "$(RED)Removing library $(UNDERLINE)$(NAME)$(RESET)$(RED)$(RESET)"
+	@echo -e "$(RED)Removing library $(UNDERLINE)$(NAME)$(RESET)"
 	@rm -f $(NAME)
 
 re: fclean all
