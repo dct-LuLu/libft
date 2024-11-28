@@ -6,7 +6,7 @@
 /*   By: jaubry-- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 18:53:56 by jaubry--          #+#    #+#             */
-/*   Updated: 2024/11/25 20:23:06 by jaubry--         ###   ########.fr       */
+/*   Updated: 2024/11/28 21:03:54 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	ratoi(const char *str)
 		neg = -1;
 	if ((str[i] == '+') || (str[i] == '-'))
 		i++;
-	if (ft_isdigit(str[i]) && (overflowing((char *)str + i, neg) != 1))
+	if (ft_isdigit(str[i]) && (overflowing((char *)str + i, neg) != 0))
 		return (overflowing((char *)str + i, neg));
 	while (ft_isdigit(str[i]))
 	{
@@ -66,9 +66,9 @@ static int	overflowing(char *str, int neg)
 	{
 		if ((len > 10) || ((len == 10)
 				&& (ft_strncmp("2147483648", str, 10) < 0)))
-			return (0);
+			return (1);
 	}
-	return (1);
+	return (0);
 }
 
 bool	check_flow(char *str, int ret)
@@ -86,7 +86,7 @@ bool	check_flow(char *str, int ret)
 		i++;
 	if (ft_isdigit(str[i]))
 	{
-		if ((ret == 0) && (neg == -1))
+		if ((ret == 1) && (neg == -1))
 			return (1);
 		else if ((ret == -1) && (neg == 1))
 			return (1);
@@ -107,7 +107,7 @@ int	main(int argc, char **argv)
 		if (check_flow(argv[1], ret))
 		{
 			printf("error:\n");
-			if (ret == 0)
+			if (ret == 1)
 				printf("(underflow)\n");
 			if (ret == -1)
 				printf("(overflow)\n");
