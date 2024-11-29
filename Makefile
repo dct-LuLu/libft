@@ -6,7 +6,7 @@
 #    By: jaubry-- <jaubry--@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/27 01:19:17 by jaubry--          #+#    #+#              #
-#    Updated: 2024/11/27 02:08:00 by jaubry--         ###   ########.fr        #
+#    Updated: 2024/11/29 01:55:16 by jaubry--         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 # Colors and formatting
@@ -58,7 +58,8 @@ SRCS		= ft_atoi.c ft_isascii.c ft_memcmp.c ft_putendl_fd.c \
               ft_strlcpy.c ft_strrchr.c strr_utils.c ratoi.c \
               ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c \
               ft_lstlast_bonus.c ft_lstadd_back_bonus.c ft_lstdelone_bonus.c \
-              ft_lstclear_bonus.c ft_lstiter_bonus.c ft_lstmap_bonus.c
+              ft_lstclear_bonus.c ft_lstiter_bonus.c ft_lstmap_bonus.c \
+              freejoin.c
 
 # Printf sources
 PRINTF_SRCS	= ft_handlers_utils.c ft_put_hex.c ft_putnbr.c write_utils.c
