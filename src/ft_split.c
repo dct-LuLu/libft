@@ -6,7 +6,7 @@
 /*   By: jaubry-- <jaubry--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 07:20:30 by jaubry--          #+#    #+#             */
-/*   Updated: 2024/11/14 09:23:21 by jaubry--         ###   ########.fr       */
+/*   Updated: 2024/12/03 19:48:55 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,17 +52,6 @@ static size_t	ft_tokenlen(char const *str, char c)
 		i++;
 	}
 	return (i);
-}
-
-static char	*ft_strndup(char const *str, size_t n)
-{
-	char	*dup;
-
-	dup = ft_calloc(sizeof(char), (n + 1));
-	if (!dup)
-		return (NULL);
-	ft_memcpy(dup, str, n);
-	return (dup);
 }
 
 static void	ft_freesplit(char **split, size_t len)
