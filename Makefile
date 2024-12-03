@@ -6,7 +6,7 @@
 #    By: jaubry-- <jaubry--@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/27 01:19:17 by jaubry--          #+#    #+#              #
-#    Updated: 2024/11/29 01:55:16 by jaubry--         ###   ########.fr        #
+#    Updated: 2024/12/03 04:20:25 by jaubry--         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 # Colors and formatting
@@ -26,6 +26,7 @@ DEPDIR		= .dep
 INCDIR		= include
 PRINTF_DIR	= $(SRCDIR)/ft_printf
 HANDL_DIR	= $(PRINTF_DIR)/handlers
+GNL_DIR		= $(SRCDIR)/get_next_line
 
 # Output
 NAME		= libft.a
@@ -41,7 +42,7 @@ AR			= ar
 ARFLAGS		= rcs
 
 # VPATH
-vpath %.c $(SRCDIR) $(PRINTF_DIR) $(HANDL_DIR)
+vpath %.c $(SRCDIR) $(PRINTF_DIR) $(HANDL_DIR) $(GNL_DIR)
 vpath %.h $(INCDIR)
 vpath %.o $(OBJDIR)
 vpath %.d $(DEPDIR)
@@ -66,11 +67,14 @@ PRINTF_SRCS	= ft_handlers_utils.c ft_put_hex.c ft_putnbr.c write_utils.c
 PRINTF_SRCS	:= $(addprefix $(HANDL_DIR)/, $(PRINTF_SRCS)) \
 			   $(PRINTF_DIR)/ft_printf.c
 
-SRCS		+= $(PRINTF_SRCS)
+GNL_SRCS	= get_next_line.c get_next_line_utils.c
+GNL_SRCS	:= $(addprefix $(GNL_DIR)/, $(GNL_SRCS))
+
+SRCS		+= $(PRINTF_SRCS) $(GNL_SRCS)
 
 OBJS		= $(addprefix $(OBJDIR)/, $(notdir $(SRCS:.c=.o)))
 DEPS		= $(addprefix $(DEPDIR)/, $(notdir $(SRCS:.o=.d)))
-INCLUDES	= libft.h ft_handlers.h
+INCLUDES	= libft.h ft_handlers.h get_next_line.h
 
 
 
