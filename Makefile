@@ -6,7 +6,7 @@
 #    By: jaubry-- <jaubry--@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/27 01:19:17 by jaubry--          #+#    #+#              #
-#    Updated: 2024/12/03 04:20:25 by jaubry--         ###   ########.fr        #
+#    Updated: 2024/12/03 21:48:56 by jaubry--         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 # Colors and formatting
@@ -93,7 +93,7 @@ $(OBJDIR) $(DEPDIR):
 	@echo -e "$(BLUE)Creating directory $(UNDERLINE)libft/$@$(RESET)"
 	@mkdir -p $@
 
-debug: CFLAGS += -g3
+debug: CFLAGS += -g
 debug:
 	@echo -e "$(YELLOW)$(BOLD)⚠ Building $(NAME) in debug mode...$(RESET)"
 	@$(MAKE) -s -B
