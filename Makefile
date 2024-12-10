@@ -6,9 +6,11 @@
 #    By: jaubry-- <jaubry--@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/27 01:19:17 by jaubry--          #+#    #+#              #
-#    Updated: 2024/12/10 02:34:35 by jaubry--         ###   ########.fr        #
+#    Updated: 2024/12/10 02:56:25 by jaubry--         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+SHELL := /bin/bash
+
 # Colors and formatting
 GREEN		= \e[1;32m
 BLUE		= \e[1;34m
