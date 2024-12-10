@@ -6,7 +6,7 @@
 /*   By: jaubry-- <jaubry--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 07:36:56 by jaubry--          #+#    #+#             */
-/*   Updated: 2024/12/03 06:56:38 by jaubry--         ###   ########.fr       */
+/*   Updated: 2024/12/10 02:36:51 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,5 +123,9 @@ char	*freejoin(char *s1, char *s2);
 char	*get_next_line(int fd);
 
 char	*ft_strndup(const char *str, size_t n);
+
+int		count_tokens(const char *str, char sep);
+
+bool	is_in(const char *str, char c);
 
 #endif

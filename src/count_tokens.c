@@ -6,7 +6,7 @@
 /*   By: jaubry-- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 02:04:52 by jaubry--          #+#    #+#             */
-/*   Updated: 2024/12/10 02:05:15 by jaubry--         ###   ########.fr       */
+/*   Updated: 2024/12/10 02:36:59 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /*
 	Returns the number of "tokens" separated by the char sep
 */
-int	count_tokens(char *str, char sep)
+int	count_tokens(const char *str, char sep)
 {
 	size_t	i;
 	int		count;
