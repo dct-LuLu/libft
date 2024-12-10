@@ -6,13 +6,13 @@
 /*   By: jaubry-- <jaubry--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 20:37:51 by jaubry--          #+#    #+#             */
-/*   Updated: 2024/12/03 04:20:47 by jaubry--         ###   ########.fr       */
+/*   Updated: 2024/12/10 02:51:51 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(char *str)
+static size_t	ft_strlen(char *str)
 {
 	size_t	i;
 
