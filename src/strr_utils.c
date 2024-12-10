@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   strr_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaubry-- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 18:12:47 by jaubry--          #+#    #+#             */
-/*   Updated: 2024/11/25 18:16:09 by jaubry--         ###   ########.fr       */
+/*   Updated: 2024/12/10 02:03:23 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	free_strr(char **strs)
 	size_t	i;
 
 	i = 0;
-	while (strs[i])
+	while (strs && strs[i])
 	{
 		free(strs[i]);
 		i++;
