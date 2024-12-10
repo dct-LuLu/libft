@@ -6,13 +6,13 @@
 /*   By: jaubry-- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 02:32:38 by jaubry--          #+#    #+#             */
-/*   Updated: 2024/12/10 02:33:21 by jaubry--         ###   ########.fr       */
+/*   Updated: 2024/12/10 02:37:06 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-bool	is_in(char *str, char c)
+bool	is_in(const char *str, char c)
 {
 	size_t	i;
 
