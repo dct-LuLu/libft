@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaubry-- <jaubry--@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 07:36:56 by jaubry--          #+#    #+#             */
-/*   Updated: 2024/12/10 02:36:51 by jaubry--         ###   ########.fr       */
+/*   Updated: 2024/12/29 21:30:12 by jaubry--         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,5 +127,7 @@ char	*ft_strndup(const char *str, size_t n);
 int		count_tokens(const char *str, char sep);
 
 bool	is_in(const char *str, char c);
+
+int		ft_strcmp(const char *s1, const char *s2);
 
 #endif
