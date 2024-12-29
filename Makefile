@@ -6,10 +6,11 @@
 #    By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/27 01:19:17 by jaubry--          #+#    #+#              #
-#    Updated: 2024/12/29 21:30:25 by jaubry--         ###   ########lyon.fr    #
+#    Updated: 2024/12/29 21:38:50 by jaubry--         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
+SHELL := /bin/bash
 
 # Colors and formatting
 GREEN		= \e[1;32m
