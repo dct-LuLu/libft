@@ -6,7 +6,7 @@
 #    By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/27 01:19:17 by jaubry--          #+#    #+#              #
-#    Updated: 2024/12/29 21:38:50 by jaubry--         ###   ########lyon.fr    #
+#    Updated: 2024/12/29 21:42:44 by jaubry--         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,7 +63,7 @@ SRCS		= ft_atoi.c ft_isascii.c ft_memcmp.c ft_putendl_fd.c \
               ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c \
               ft_lstlast_bonus.c ft_lstadd_back_bonus.c ft_lstdelone_bonus.c \
               ft_lstclear_bonus.c ft_lstiter_bonus.c ft_lstmap_bonus.c \
-              freejoin.c count_tokens.c is_in.c ft_strndup.c ft_strcmp
+              freejoin.c count_tokens.c is_in.c ft_strndup.c ft_strcmp.c
 
 # Printf sources
 PRINTF_SRCS	= ft_handlers_utils.c ft_put_hex.c ft_putnbr.c write_utils.c
