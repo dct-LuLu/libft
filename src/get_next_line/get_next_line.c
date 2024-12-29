@@ -6,7 +6,7 @@
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 20:37:41 by jaubry--          #+#    #+#             */
-/*   Updated: 2024/12/03 04:20:52 by jaubry--         ###   ########.fr       */
+/*   Updated: 2024/12/29 21:18:14 by jaubry--         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char	*get_next_line(int fd)
 		sep_len = get_line_len(s_spill[fd]);
 	if (sep_len)
 	{
-		line = ft_strndup(s_spill[fd], sep_len);
+		line = ft_strndup_gnl(s_spill[fd], sep_len);
 		shift_back(s_spill[fd], s_spill[fd] + sep_len);
 	}
 	else
@@ -88,7 +88,7 @@ char	*ft_get_line(int fd, char *s_spill, ssize_t read_len, size_t sep_len)
 
 	if (*s_spill)
 	{
-		line = ft_strndup(s_spill, 0);
+		line = ft_strndup_gnl(s_spill, 0);
 		ft_memset(s_spill, 0, sizeof(s_spill));
 	}
 	else
@@ -104,7 +104,7 @@ char	*ft_get_line(int fd, char *s_spill, ssize_t read_len, size_t sep_len)
 			shift_back(s_spill, buffer + sep_len);
 			buffer[sep_len] = '\0';
 		}
-		line = ft_strjoin(line, buffer);
+		line = ft_strjoin_gnl(line, buffer);
 		if (sep_len || !line || (read_len == 0))
 			return (line);
 	}

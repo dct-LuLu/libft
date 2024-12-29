@@ -3,30 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaubry-- <jaubry--@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 20:37:51 by jaubry--          #+#    #+#             */
-/*   Updated: 2024/12/10 02:51:51 by jaubry--         ###   ########.fr       */
+/*   Updated: 2024/12/29 21:18:34 by jaubry--         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static size_t	ft_strlen(char *str)
-{
-	size_t	i;
-
-	i = 0;
-	while (str && str[i])
-		i++;
-	return (i);
-}
-
 /*
 	Function that takes as parameter two strings and concatanates them.
 	It always frees the first string.
 */
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin_gnl(char *s1, char *s2)
 {
 	char	*str;
 	size_t	len;
@@ -53,7 +43,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	return (str);
 }
 
-char	*ft_strndup(char *str, size_t n)
+char	*ft_strndup_gnl(char *str, size_t n)
 {
 	size_t	i;
 	char	*ret;
@@ -70,32 +60,4 @@ char	*ft_strndup(char *str, size_t n)
 		i++;
 	}
 	return (ret);
-}
-
-void	*ft_memset(void *s, int c, size_t n)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < n)
-	{
-		((unsigned char *)s)[i] = c;
-		i++;
-	}
-	return (s);
-}
-
-void	*ft_calloc(size_t len, size_t size)
-{
-	size_t	bytes;
-	void	*alloc;
-
-	bytes = len * size;
-	if (((bytes != 0) && (bytes < len || bytes < size)))
-		return (NULL);
-	alloc = malloc(bytes);
-	if (!alloc)
-		return (NULL);
-	ft_memset(alloc, 0, bytes);
-	return (alloc);
 }
