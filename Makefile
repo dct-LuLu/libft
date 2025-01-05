@@ -6,7 +6,7 @@
 #    By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/27 01:19:17 by jaubry--          #+#    #+#              #
-#    Updated: 2024/12/29 21:42:44 by jaubry--         ###   ########lyon.fr    #
+#    Updated: 2025/01/05 14:25:19 by jaubry--         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,8 +24,8 @@ RESET		= \e[0m
 
 # Directories
 SRCDIR		= src
-OBJDIR		= .obj
-DEPDIR		= .dep
+OBJDIR		= .obj/
+DEPDIR		= .dep/
 INCDIR		= include
 PRINTF_DIR	= $(SRCDIR)/ft_printf
 HANDL_DIR	= $(PRINTF_DIR)/handlers
@@ -110,7 +110,7 @@ help:
 	@echo "  re      : Rebuild everything"
 
 clean:
-	@echo -e "$(RED)Cleaning $(UNDERLINE)$(NAME)$(RESET)$(RED) object files from $(UNDERLINE)$(OBJDIR)$(RESET)$(RED) and $(UNDERLINE)$(DEPDIR)$(RESET)"
+	@echo -e "$(RED)Cleaning temporary libft files from $(UNDERLINE)$(OBJDIR)$(RESET)$(RED) and $(UNDERLINE)$(DEPDIR)$(RESET)"
 	@rm -rf $(OBJDIR) $(DEPDIR)
 
 fclean: clean
