@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_handlers.h                                      :+:      :+:    :+:   */
+/*   ft_dhandlers.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaubry-- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 22:50:07 by jaubry--          #+#    #+#             */
-/*   Updated: 2024/11/16 19:07:05 by jaubry--         ###   ########.fr       */
+/*   Updated: 2025/01/10 09:57:34 by jaubry--         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_HANDLERS_H
-# define FT_HANDLERS_H
+#ifndef FT_DHANDLERS_H
+# define FT_DHANDLERS_H
 # include <sys/types.h>
 # include <stdbool.h>
 # include <stdarg.h>
 # include <unistd.h>
 
-ssize_t	handler(va_list args, char specifier);
+ssize_t	handler_fd(va_list args, char specifier, int fd);
 
-ssize_t	ft_put_hex(long unsigned int nb, bool maj);
-ssize_t	ft_put_ptr(long unsigned int ptr);
-ssize_t	ft_putnbr(long int nb);
-ssize_t	ft_putchar(char c);
-ssize_t	ft_putstr(char *str);
-ssize_t	ft_putstr_l(char *str, size_t len);
-ssize_t	ft_put_unknown(char c);
-ssize_t	ft_printstr(char *str);
+ssize_t	ft_put_hex_fd(long unsigned int nb, bool maj, int fd);
+ssize_t	ft_put_ptr_fd(long unsigned int ptr, int fd);
+ssize_t	ft_putnbr_fd(long int nb, int fd);
+ssize_t	ft_putchar_fd(char c, int fd);
+ssize_t	ft_putstr_fd(char *str, int fd);
+ssize_t	ft_putstr_l_fd(char *str, size_t len, int fd);
+ssize_t	ft_put_unknown_fd(char c, int fd);
+ssize_t	ft_printstr_fd(char *str, int fd);
 
 #endif

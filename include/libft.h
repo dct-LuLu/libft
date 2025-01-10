@@ -6,7 +6,7 @@
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 07:36:56 by jaubry--          #+#    #+#             */
-/*   Updated: 2025/01/08 09:56:02 by jaubry--         ###   ########.fr       */
+/*   Updated: 2025/01/10 09:06:58 by jaubry--         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,8 @@ size_t	ft_strrlen(char **strs);
 void	free_strr(char **strs);
 
 int		ft_printf(const char *format, ...);
+
+int		ft_dprintf(int fd, const char *format, ...);
 
 char	*freejoin(char *s1, char *s2);
 

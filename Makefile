@@ -6,7 +6,7 @@
 #    By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/27 01:19:17 by jaubry--          #+#    #+#              #
-#    Updated: 2025/01/08 09:56:20 by jaubry--         ###   ########.fr        #
+#    Updated: 2025/01/10 09:11:49 by jaubry--         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,8 +27,8 @@ SRCDIR		= src
 OBJDIR		= .obj/
 DEPDIR		= .dep/
 INCDIR		= include
-PRINTF_DIR	= $(SRCDIR)/ft_printf
-HANDL_DIR	= $(PRINTF_DIR)/handlers
+DPRINTF_DIR	= $(SRCDIR)/ft_dprintf
+DHANDL_DIR	= $(DPRINTF_DIR)/handlers
 GNL_DIR		= $(SRCDIR)/get_next_line
 
 # Output
@@ -45,7 +45,7 @@ AR			= ar
 ARFLAGS		= rcs
 
 # VPATH
-vpath %.c $(SRCDIR) $(PRINTF_DIR) $(HANDL_DIR) $(GNL_DIR)
+vpath %.c $(SRCDIR) $(DPRINTF_DIR) $(DHANDL_DIR) $(GNL_DIR)
 vpath %.h $(INCDIR)
 vpath %.o $(OBJDIR)
 vpath %.d $(DEPDIR)
@@ -66,19 +66,19 @@ SRCS		= ft_atoi.c ft_isascii.c ft_memcmp.c ft_putendl_fd.c \
               freejoin.c count_tokens.c is_in.c ft_strndup.c ft_strcmp.c \
               ft_strstr.c
 
-# Printf sources
-PRINTF_SRCS	= ft_handlers_utils.c ft_put_hex.c ft_putnbr.c write_utils.c
-PRINTF_SRCS	:= $(addprefix $(HANDL_DIR)/, $(PRINTF_SRCS)) \
-			   $(PRINTF_DIR)/ft_printf.c
+# Printf and dprintf sources
+DPRINTF_SRCS= ft_handlers_utils.c ft_put_hex.c ft_putnbr.c write_utils.c
+DPRINTF_SRCS:= $(addprefix $(DHANDL_DIR)/, $(DPRINTF_SRCS)) \
+			   $(DPRINTF_DIR)/ft_dprintf.c
 
 GNL_SRCS	= get_next_line.c get_next_line_utils.c
 GNL_SRCS	:= $(addprefix $(GNL_DIR)/, $(GNL_SRCS))
 
-SRCS		+= $(PRINTF_SRCS) $(GNL_SRCS)
+SRCS		+= $(DPRINTF_SRCS) $(GNL_SRCS)
 
 OBJS		= $(addprefix $(OBJDIR)/, $(notdir $(SRCS:.c=.o)))
 DEPS		= $(addprefix $(DEPDIR)/, $(notdir $(SRCS:.o=.d)))
-INCLUDES	= libft.h ft_handlers.h get_next_line.h
+INCLUDES	= libft.h ft_dhandlers.h get_next_line.h
 
 
 
