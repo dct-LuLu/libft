@@ -6,7 +6,7 @@
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 23:28:03 by jaubry--          #+#    #+#             */
-/*   Updated: 2025/01/10 09:06:11 by jaubry--         ###   ########lyon.fr   */
+/*   Updated: 2025/01/10 12:05:48 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ int	ft_dprintf(int fd, const char *format, ...)
 	while (format[i])
 	{
 		if (format[i] == '%')
-			write_len += handler_fd(args, format[++i], fd);
+			write_len += handler(args, format[++i], fd);
 		else
-			write_len += ft_putchar_fd(format[i], fd);
+			write_len += ft_putchar(format[i], fd);
 		i++;
 	}
 	va_end(args);
@@ -47,9 +47,9 @@ int	ft_printf(const char *format, ...)
 	while (format[i])
 	{
 		if (format[i] == '%')
-			write_len += handler_fd(args, format[++i], fd);
+			write_len += handler(args, format[++i], fd);
 		else
-			write_len += ft_putchar_fd(format[i], fd);
+			write_len += ft_putchar(format[i], fd);
 		i++;
 	}
 	va_end(args);
