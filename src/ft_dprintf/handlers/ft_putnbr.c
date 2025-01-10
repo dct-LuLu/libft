@@ -3,34 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaubry-- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 18:58:10 by jaubry--          #+#    #+#             */
-/*   Updated: 2024/11/16 19:01:29 by jaubry--         ###   ########.fr       */
+/*   Updated: 2025/01/10 09:58:44 by jaubry--         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
-#include "ft_handlers.h"
 
-static ssize_t	ft_recu_putnbr(long int nb)
+#include "ft_dhandlers.h"
+
+static ssize_t	ft_recu_putnbr_fd(long int nb, int fd)
 {
 	if (nb > 0)
-		return (ft_recu_putnbr(nb / 10) + ft_putchar((nb % 10) + '0'));
+		return (ft_recu_putnbr_fd(nb / 10, fd)
+			+ ft_putchar_fd((nb % 10) + '0', fd));
 	return (0);
 }
 
-ssize_t	ft_putnbr(long int nb)
+ssize_t	ft_putnbr_fd(long int nb, int fd)
 {
 	ssize_t		write_len;
 
 	write_len = 0;
 	if (nb < 0)
 	{
-		write_len += ft_putchar('-');
+		write_len += ft_putchar_fd('-', fd);
 		nb = -nb;
 	}
 	if (nb == 0)
-		write_len += ft_putchar('0');
+		write_len += ft_putchar_fd('0', fd);
 	else
-		write_len += ft_recu_putnbr(nb);
+		write_len += ft_recu_putnbr_fd(nb, fd);
 	return (write_len);
 }

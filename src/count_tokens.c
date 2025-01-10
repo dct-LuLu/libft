@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   count_tokens.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaubry-- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 02:04:52 by jaubry--          #+#    #+#             */
-/*   Updated: 2024/12/10 02:36:59 by jaubry--         ###   ########.fr       */
+/*   Updated: 2025/01/10 09:58:01 by jaubry--         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,3 @@ int	count_tokens(const char *str, char sep)
 	}
 	return (count);
 }
-

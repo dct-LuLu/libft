@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   write_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaubry-- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 18:55:45 by jaubry--          #+#    #+#             */
-/*   Updated: 2024/11/26 23:16:50 by jaubry--         ###   ########.fr       */
+/*   Updated: 2025/01/09 12:05:40 by jaubry--         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
-#include "ft_handlers.h"
+
+#include "ft_dhandlers.h"
 
 static size_t	ft_strlen(char *str)
 {
@@ -21,25 +22,25 @@ static size_t	ft_strlen(char *str)
 	return (i);
 }
 
-ssize_t	ft_putchar(char c)
+ssize_t	ft_putchar_fd(char c, int fd)
 {
-	return (write(1, &c, 1));
+	return (write(fd, &c, 1));
 }
 
-ssize_t	ft_putstr(char *str)
+ssize_t	ft_putstr_fd(char *str, int fd)
 {
-	return (write(1, str, ft_strlen(str)));
+	return (write(fd, str, ft_strlen(str)));
 }
 
-ssize_t	ft_putstr_l(char *str, size_t len)
+ssize_t	ft_putstr_l_fd(char *str, size_t len, int fd)
 {
-	return (write(1, str, len));
+	return (write(fd, str, len));
 }
 
-ssize_t	ft_printstr(char *str)
+ssize_t	ft_printstr_fd(char *str, int fd)
 {
 	if (!str)
-		return (ft_putstr_l("(null)", 6));
+		return (ft_putstr_l_fd("(null)", 6, fd));
 	else
-		return (ft_putstr(str));
+		return (ft_putstr_fd(str, fd));
 }
