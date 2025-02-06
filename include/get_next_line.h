@@ -6,7 +6,7 @@
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 20:37:48 by jaubry--          #+#    #+#             */
-/*   Updated: 2025/02/06 16:02:11 by jaubry--         ###   ########.fr       */
+/*   Updated: 2025/02/06 17:04:18 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,11 @@ char	*get_next_line(int fd);
 char	*ft_strjoin_gnl(char *s1, char *s2);
 
 char	*ft_strndup_gnl(char *str, size_t n);
+
+size_t	ft_strlen_gnl(char *str);
+
+void	*memsetgnl(void *s, int c, size_t n);
+
+void	*ft_calloc_gnl(size_t len, size_t size);
 
 #endif
