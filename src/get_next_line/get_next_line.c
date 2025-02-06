@@ -6,7 +6,7 @@
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 20:37:41 by jaubry--          #+#    #+#             */
-/*   Updated: 2025/02/06 17:02:17 by jaubry--         ###   ########.fr       */
+/*   Updated: 2024/12/29 21:18:14 by jaubry--         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,15 +89,15 @@ char	*ft_get_line(int fd, char *s_spill, ssize_t read_len, size_t sep_len)
 	if (*s_spill)
 	{
 		line = ft_strndup_gnl(s_spill, 0);
-		memsetgnl(s_spill, 0, sizeof(s_spill));
+		ft_memset(s_spill, 0, sizeof(s_spill));
 	}
 	else
-		line = ft_calloc_gnl(sizeof(char), 1);
+		line = ft_calloc(sizeof(char), 1);
 	while (1)
 	{
-		read_len = read(fd, memsetgnl(buffer, 0, sizeof(buffer)), BUFFER_SIZE);
+		read_len = read(fd, ft_memset(buffer, 0, sizeof(buffer)), BUFFER_SIZE);
 		if ((read_len < 0) || ((read_len == 0) && (!*line)))
-			return (free(line), memsetgnl(s_spill, 0, sizeof(s_spill)), NULL);
+			return (free(line), ft_memset(s_spill, 0, sizeof(s_spill)), NULL);
 		sep_len = get_line_len(buffer);
 		if (sep_len)
 		{
