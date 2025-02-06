@@ -6,7 +6,7 @@
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 20:37:48 by jaubry--          #+#    #+#             */
-/*   Updated: 2024/12/29 21:17:39 by jaubry--         ###   ########lyon.fr   */
+/*   Updated: 2025/02/06 16:02:11 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 32
+#  define BUFFER_SIZE 256
 # endif
 # define MAX_FD 1024
 
