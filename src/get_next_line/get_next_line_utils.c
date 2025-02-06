@@ -6,21 +6,11 @@
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 20:37:51 by jaubry--          #+#    #+#             */
-/*   Updated: 2025/02/06 17:02:28 by jaubry--         ###   ########.fr       */
+/*   Updated: 2025/01/10 09:58:18 by jaubry--         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-size_t	ft_strlen_gnl(char *str)
-{
-	size_t	i;
-
-	i = 0;
-	while (str && str[i])
-		i++;
-	return (i);
-}
 
 /*
 	Function that takes as parameter two strings and concatanates them.
@@ -70,32 +60,4 @@ char	*ft_strndup_gnl(char *str, size_t n)
 		i++;
 	}
 	return (ret);
-}
-
-void	*memsetgnl(void *s, int c, size_t n)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < n)
-	{
-		((unsigned char *)s)[i] = c;
-		i++;
-	}
-	return (s);
-}
-
-void	*ft_calloc_gnl(size_t len, size_t size)
-{
-	size_t	bytes;
-	void	*alloc;
-
-	bytes = len * size;
-	if (((bytes != 0) && (bytes < len || bytes < size)))
-		return (NULL);
-	alloc = malloc(bytes);
-	if (!alloc)
-		return (NULL);
-	ft_memset(alloc, 0, bytes);
-	return (alloc);
 }
