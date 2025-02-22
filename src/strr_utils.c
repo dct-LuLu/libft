@@ -6,7 +6,7 @@
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 18:12:47 by jaubry--          #+#    #+#             */
-/*   Updated: 2025/02/22 20:23:05 by jaubry--         ###   ########.fr       */
+/*   Updated: 2025/02/22 21:32:36 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,9 @@ int	strr_add(char ***strs, char *str)
 	new = ft_calloc(ft_strrlen(*strs) + 2, sizeof(char *));
 	if (!new)
 		return (1);
-	while (*strs[i])
+	while ((*strs)[i])
 	{
-		new[i] = ft_strdup(*strs[i]);
+		new[i] = ft_strdup((*strs)[i]);
 		if (!new[i])
 			return (free_strr_fail(new, i), free(new), 1);
 		i++;
