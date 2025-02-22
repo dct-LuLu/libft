@@ -6,7 +6,7 @@
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 07:36:56 by jaubry--          #+#    #+#             */
-/*   Updated: 2025/01/10 09:06:58 by jaubry--         ###   ########lyon.fr   */
+/*   Updated: 2025/02/22 20:52:39 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,5 +133,11 @@ bool	is_in(const char *str, char c);
 int		ft_strcmp(const char *s1, const char *s2);
 
 char	*ft_strstr(const char *big, const char *little);
+
+void	free_strr_fail(char **strs, size_t size);
+
+char	**strrcpy(char **strs);
+
+int		strr_add(char ***strs, char *str);
 
 #endif
