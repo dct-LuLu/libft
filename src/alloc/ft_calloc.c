@@ -6,7 +6,7 @@
 /*   By: lmarcucc <lucas@student.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 08:27:09 by jaubry--          #+#    #+#             */
-/*   Updated: 2025/04/17 20:50:09 by jaubry--         ###   ########.fr       */
+/*   Updated: 2025/05/17 14:01:52 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,7 @@ void	*ft_calloc(size_t len, size_t size)
 		return (NULL);
 	alloc = malloc(bytes);
 	if (!alloc)
-	{
-		perror("malloc");
 		return (NULL);
-	}
 	ft_memset(alloc, 0, bytes);
 	return (alloc);
 }
