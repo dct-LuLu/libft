@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmarcucc <lucas@student.fr>                +#+  +:+       +#+        */
+/*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 08:27:09 by jaubry--          #+#    #+#             */
-/*   Updated: 2025/05/17 14:01:52 by jaubry--         ###   ########.fr       */
+/*   Updated: 2025/07/23 00:25:53 by jaubry--         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,5 @@ void	*ft_calloc(size_t len, size_t size)
 	alloc = malloc(bytes);
 	if (!alloc)
 		return (NULL);
-	ft_memset(alloc, 0, bytes);
-	return (alloc);
+	return (ft_fbzero(alloc, bytes));
 }
