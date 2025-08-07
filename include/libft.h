@@ -6,7 +6,7 @@
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 07:36:56 by jaubry--          #+#    #+#             */
-/*   Updated: 2025/07/23 00:54:55 by jaubry--         ###   ########lyon.fr   */
+/*   Updated: 2025/08/07 03:25:06 by jaubry--         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ bool	ft_isspace(const char c);
 bool	is_in(const char *str, char c);
 bool	has_in(const char *str, bool is_char(char));
 int		count_tokens(const char *str, char sep);
+char	*ft_strtok(char *s, const char *delim);
 
 //
 //
@@ -94,6 +95,7 @@ char	*ft_strndup(const char *str, size_t n);
 
 int		ft_strcmp(const char *s1, const char *s2);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
+int		ft_strrncmp(const char *s1, const char *s2, size_t n);
 
 char	*ft_strstr(const char *big, const char *little);
 char	*ft_strnstr(const char *big, const char *little, size_t len);
@@ -168,7 +170,9 @@ typedef union u_result
 	int		*int_t;
 	uint8_t	*uint8_t;
 }	t_result;
+
 int		ft_scan(int line_num, char *format, char *line, ...);
+
 //
 //
 //
@@ -253,5 +257,16 @@ int		vector_realloc(t_vector *vector);
 int		set_vector_size(t_vector *vector, size_t size);
 
 void	remove_vector_elem(t_vector *vector, size_t i);
+//
+//
+//
+
+/* -------------------------------------------------------------------------- */
+/*                                   Utils                                    */
+/* -------------------------------------------------------------------------- */
+
+/* ------------------------------- Time utils ------------------------------- */
+
+ssize_t	get_current_time(void);
 
 #endif
