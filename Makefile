@@ -6,12 +6,12 @@
 #    By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/27 01:19:17 by jaubry--          #+#    #+#              #
-#    Updated: 2025/08/15 21:44:30 by jaubry--         ###   ########.fr        #
+#    Updated: 2025/08/15 22:29:38 by jaubry--         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ROOTDIR		?= .
-include $(ROOTDIR)/make_utils.mk
+include $(ROOTDIR)/mkidir/make_utils.mk
 
 # Directories
 CDIR		= libft
