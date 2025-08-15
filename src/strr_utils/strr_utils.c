@@ -6,7 +6,7 @@
 /*   By: lmarcucc <lucas@student.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 18:12:47 by jaubry--          #+#    #+#             */
-/*   Updated: 2025/03/14 13:15:10 by lmarcucc         ###   ########.fr       */
+/*   Updated: 2025/08/13 14:43:34 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ char	**ft_strrdup(char **strs)
 	{
 		new[i] = ft_strdup(strs[i]);
 		if (!new[i])
-			return (free_strr_fail(new, i), free(new), NULL);
+			return (free_strr_fail(new, i), NULL);
 		i++;
 	}
 	return (new);
@@ -83,12 +83,12 @@ int	strr_add(char ***strs, char *str)
 	{
 		new[i] = ft_strdup((*strs)[i]);
 		if (!new[i])
-			return (free_strr_fail(new, i), free(new), 1);
+			return (free_strr_fail(new, i), 1);
 		i++;
 	}
 	new[i] = ft_strdup(str);
 	if (!new[i])
-		return (free_strr_fail(new, i), free(new), 1);
+		return (free_strr_fail(new, i), 1);
 	free_strr(*strs);
 	*strs = new;
 	return (0);
