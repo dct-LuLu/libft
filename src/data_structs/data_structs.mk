@@ -6,7 +6,7 @@
 #    By: jaubry-- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/08 08:59:31 by jaubry--          #+#    #+#              #
-#    Updated: 2025/04/01 16:03:50 by jaubry--         ###   ########.fr        #
+#    Updated: 2025/07/22 22:10:42 by jaubry--         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@
 STRUCTS_DIR		= $(SRCDIR)/data_structs
 LIST_DIR		= $(STRUCTS_DIR)/list
 DLIST_DIR		= $(STRUCTS_DIR)/dlist
+VECTOR_DIR		= $(STRUCTS_DIR)/vector
 
 # Source files
 LIST_SRCS	= ft_lstnew.c \
@@ -35,7 +36,16 @@ DLIST_SRCS	= ft_dlstnew.c \
 			  ft_dlstswap.c
 DLIST_SRCS	:= $(addprefix $(DLIST_DIR)/, $(DLIST_SRCS))
 
-SRCS		+= $(LIST_SRCS) $(DLIST_SRCS)
+VECTOR_SRCS	= vector_add.c \
+			  vector_init.c \
+			  vector_realloc.c \
+			  set_vector_size.c \
+			  remove_vector_elem.c \
+			  get_vector_value.c \
+			  free_vector.c
+VECTOR_SRCS	:= $(addprefix $(VECTOR_DIR)/, $(VECTOR_SRCS))
+
+SRCS		+= $(LIST_SRCS) $(DLIST_SRCS) $(VECTOR_SRCS)
 
 # VPATH
-vpath %.c $(LIST_DIR) $(DLIST_DIR)
+vpath %.c $(LIST_DIR) $(DLIST_DIR) $(VECTOR_DIR)

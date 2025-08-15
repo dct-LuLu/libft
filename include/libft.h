@@ -3,19 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmarcucc <lucas@student.fr>                +#+  +:+       +#+        */
+/*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 07:36:56 by jaubry--          #+#    #+#             */
-/*   Updated: 2025/05/14 08:22:02 by jaubry--         ###   ########.fr       */
+/*   Updated: 2025/08/07 07:07:49 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+
 # include <stdlib.h>
 # include <stdio.h>
 # include <unistd.h>
 # include <stdbool.h>
+# include <stdarg.h>
+# include <stdint.h>
+# include "vectors.h"
+
+# define VECTOR_BASE_SIZE 128
 
 /* -------------------------------------------------------------------------- */
 /*                                 Conversions                                */
@@ -24,6 +30,7 @@
 /* -------------------------- Type conversion utils ------------------------- */
 char	*ft_itoa(int n);
 int		ft_atoi(const char *str);
+float	ft_atod(const char *str);
 int		ratoi(const char *str);
 bool	check_flow(char *str, int ret);
 
@@ -49,6 +56,7 @@ bool	ft_isspace(const char c);
 bool	is_in(const char *str, char c);
 bool	has_in(const char *str, bool is_char(char));
 int		count_tokens(const char *str, char sep);
+char	*ft_strtok(char *s, const char *delim);
 
 //
 //
@@ -59,6 +67,7 @@ int		count_tokens(const char *str, char sep);
 /* -------------------------------------------------------------------------- */
 
 void	ft_bzero(void *s, size_t n);
+void	*ft_fbzero(void *s, size_t n);
 void	*ft_memchr(const void *s, int c, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
@@ -87,6 +96,7 @@ char	*ft_strndup(const char *str, size_t n);
 
 int		ft_strcmp(const char *s1, const char *s2);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
+int		ft_strrncmp(const char *s1, const char *s2, size_t n);
 
 char	*ft_strstr(const char *big, const char *little);
 char	*ft_strnstr(const char *big, const char *little, size_t len);
@@ -149,6 +159,20 @@ int		ft_vdprintf(int fd, const char *format, va_list ap);
 
 /* ---------------------------------- Input --------------------------------- */
 char	*get_next_line(int fd);
+typedef struct s_limits
+{
+	int	min;
+	int	max;
+}	t_limits;
+
+typedef union u_result
+{
+	float	*float_t;
+	int		*int_t;
+	uint8_t	*uint8_t;
+}	t_result;
+
+int		ft_scan(int line_num, char *format, char *line, ...);
 
 //
 //
@@ -214,4 +238,46 @@ t_dlist	*ft_dlstdup(const t_dlist *lst, void (*del)(void*));
 
 void	ft_dlstswap(t_dlist *l1, t_dlist *l2);
 
+/* -------------------------------- Vector ---------------------------------- */
+typedef struct s_vector
+{
+	size_t	element_size;
+	size_t	num_elements;
+	size_t	max_elements;
+	void	*data;
+}			t_vector;
+
+void	vector_init(t_vector *vector, size_t element_size);
+int		vector_add(t_vector *vector, void *element, size_t elem_count);
+
+void	*get_vector_value(t_vector *vector, size_t i);
+
+void	free_vector(t_vector *vector);
+int		vector_realloc(t_vector *vector);
+
+int		set_vector_size(t_vector *vector, size_t size);
+
+void	remove_vector_elem(t_vector *vector, size_t i);
+//
+//
+//
+
+/* -------------------------------------------------------------------------- */
+/*                                   Utils                                    */
+/* -------------------------------------------------------------------------- */
+
+/* ------------------------------- Time utils ------------------------------- */
+
+ssize_t	get_current_time(void);
+
+/* ---------------------- Quadratic bezier curve utils ---------------------- */
+
+t_vec2i	quad_bezier_pt(const t_vec2i start, const t_vec2i ctrl,
+			const t_vec2i end, const float t);
+
+float	quad_bezier_res(const t_vec2i start, const t_vec2i ctrl,
+			const t_vec2i end);
+
+float	quad_curve_length(const t_vec2i start, const t_vec2i ctrl,
+			const t_vec2i end);
 #endif

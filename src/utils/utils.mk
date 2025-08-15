@@ -1,22 +1,22 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    mem_utils.mk                                       :+:      :+:    :+:    #
+#    utils.mk                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/08 09:14:34 by jaubry--          #+#    #+#              #
-#    Updated: 2025/07/23 00:22:34 by jaubry--         ###   ########lyon.fr    #
+#    Updated: 2025/08/07 07:03:21 by jaubry--         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Directories
-MEM_DIR		= $(SRCDIR)/mem_utils
+UTILS_DIR	= $(SRCDIR)/utils
 
 # Source files
-MEM_SRCS	= ft_memchr.c ft_memcmp.c ft_memcpy.c ft_memmove.c ft_memset.c \
-			  ft_bzero.c ft_fbzero.c
-SRCS		+= $(addprefix $(MEM_DIR)/, $(MEM_SRCS))
+UTILS_SRCS	= time_utils.c \
+			  quad_bezier_utils.c
+SRCS		+= $(addprefix $(UTILS_DIR)/, $(UTILS_SRCS))
 
 # VPATH
-vpath %.c $(MEM_DIR)
+vpath %.c $(UTILS_DIR)

@@ -3,39 +3,40 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lmarcucc <lucas@student.fr>                +#+  +:+       +#+         #
+#    By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/27 01:19:17 by jaubry--          #+#    #+#              #
-#    Updated: 2025/04/21 15:00:25 by jaubry--         ###   ########.fr        #
+#    Updated: 2025/08/15 21:44:30 by jaubry--         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SHELL := /bin/bash
-
-# Print utils
-include colors.mk
-
-# Variables
-DEBUG		= $(if $(filter debug,$(MAKECMDGOALS)),1,0)
+ROOTDIR		?= .
+include $(ROOTDIR)/make_utils.mk
 
 # Directories
+CDIR		= libft
 SRCDIR		= src
+INCDIR		= include
 OBJDIR		= .obj
 DEPDIR		= .dep
-INCDIR		= include
 
 # Output
 NAME		= libft.a
 
 # Compiler and flags
 CC			= cc
-CFLAGS		= -Wall -Wextra -Werror $(if $(filter 1,$(DEBUG)),-g3) -D DEBUG=$(DEBUG)
+CFLAGS		= -Wall -Wextra -Werror
 DFLAGS		= -MMD -MP -MF $(DEPDIR)/$*.d
 IFLAGS		= -I$(INCDIR)
-CF			= $(CC) $(CFLAGS) $(IFLAGS) $(DFLAGS)
 
-AR			= ar
+VFLAGS		= -D DEBUG=$(DEBUG)
+
+CFLAGS		+= $(DEBUG_FLAGS) $(FFLAGS) $(VFLAGS)
+CF			= $(CC) $(CFLAGS) $(IFLAGS)
+
+AR          = $(if $(findstring -flto,$(CC)),llvm-ar,ar) $(SILENCE)
 ARFLAGS		= rcs
+RANLIB      = $(if $(findstring -flto,$(CC)),llvm-ranlib,ranlib) $(SILENCE)
 
 # VPATH
 vpath %.h $(INCDIR)
@@ -46,43 +47,38 @@ vpath %.d $(DEPDIR)
 MKS			= io/io.mk alloc/alloc.mk parsing/parsing.mk \
 			  conversion/conversion.mk mem_utils/mem_utils.mk \
 			  str_utils/str_utils.mk strr_utils/strr_utils.mk \
-			  data_structs/data_structs.mk
+			  data_structs/data_structs.mk utils/utils.mk
 
 include $(addprefix $(SRCDIR)/, $(MKS))
 
 OBJS		= $(addprefix $(OBJDIR)/, $(notdir $(SRCS:.c=.o)))
 DEPS		= $(addprefix $(DEPDIR)/, $(notdir $(SRCS:.o=.d)))
-INCLUDES	= libft.h ft_printfs_utils.h get_next_line_utils.h
 
 
 
-all: $(NAME)
-
-debug: $(NAME)
+all:	$(NAME)
+fast:	$(NAME)
+debug:	$(NAME)
 
 $(NAME): $(OBJS)
+	$(call ar-msg)
 	@$(AR) $(ARFLAGS) $@ $^
-ifeq ($(DEBUG), 1)
-	$(call color,$(ORANGE)$(BOLD),"✓ %UL%$(NAME)%NUL% debug build complete")
-else
-	$(call color,$(GREEN)$(BOLD),"✓ Library %UL%$(NAME)%NUL% successfully created")
+ifeq ($(FAST),1)
+	@$(RANLIB) $@
 endif
+	$(call ar-finish-msg)
 
 $(OBJDIR)/%.o: %.c | buildmsg $(OBJDIR) $(DEPDIR)
-	$(call color,$(BLUE),"➜ Compiling %UL%libft/$<")
-	@$(CF) -c $< -o $@
+	$(call lib-compile-obj-msg)
+	@$(CF) $(DFLAGS) -c $< -o $@
 
 $(OBJDIR) $(DEPDIR):
-	$(call color,$(CYAN),"Creating directory %UL%libft/$@")
+	$(call create-dir-msg)
 	@mkdir -p $@
 
 buildmsg:
 ifneq ($(shell [ -f $(NAME) ] && echo exists),exists)
-ifeq ($(DEBUG),1)
-	$(call color,$(YELLOW)$(BOLD),"$(NL)⚠ Building debug library %UL%$(NAME)%NUL%...")
-else
-	$(call color,$(PURPLE)$(BOLD),"$(NL)Creating library %UL%$(NAME)%NUL%...")
-endif
+	$(call lib-build-msg)
 endif
 
 help:
@@ -93,11 +89,11 @@ help:
 	@echo "  re      : Rebuild everything"
 
 clean:
-	$(call color,$(RED),"Cleaning %UL%libft%NUL% object files from %UL%$(OBJDIR)%NUL% and %UL%$(DEPDIR)")
+	$(call rm-obj-msg)
 	@rm -rf $(OBJDIR) $(DEPDIR)
 
 fclean: clean
-	$(call color,$(RED),"Removing library %UL%$(NAME)")
+	$(call rm-lib-msg)
 	@rm -f $(NAME)
 
 re: fclean all
