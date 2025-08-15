@@ -1,31 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   colors.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/19 08:27:09 by jaubry--          #+#    #+#             */
-/*   Updated: 2025/07/23 00:25:53 by jaubry--         ###   ########lyon.fr   */
+/*   Created: 2025/08/06 08:30:28 by jaubry--          #+#    #+#             */
+/*   Updated: 2025/08/06 08:31:30 by jaubry--         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef COLORS_H
+# define COLORS_H
 
-/*
-	Function that allocates len * size bytes using malloc.
-	Protect from overflowing and sets mem allocated to 0
-*/
-void	*ft_calloc(size_t len, size_t size)
-{
-	size_t	bytes;
-	void	*alloc;
+# include "colors_types.h"
+# include "rgb_operations.h"
+# include "rgb_scalar.h"
+# include "rgb_special1.h"
+# include "rgb_special2.h"
 
-	bytes = len * size;
-	if (((bytes != 0) && (bytes < len || bytes < size)))
-		return (NULL);
-	alloc = malloc(bytes);
-	if (!alloc)
-		return (NULL);
-	return (ft_fbzero(alloc, bytes));
-}
+#endif
