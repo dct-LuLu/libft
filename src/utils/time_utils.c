@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   time_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/19 08:27:09 by jaubry--          #+#    #+#             */
-/*   Updated: 2025/07/23 00:25:53 by jaubry--         ###   ########lyon.fr   */
+/*   Created: 2025/07/16 00:06:47 by jaubry--          #+#    #+#             */
+/*   Updated: 2025/08/07 03:16:29 by jaubry--         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/time.h>
 
-/*
-	Function that allocates len * size bytes using malloc.
-	Protect from overflowing and sets mem allocated to 0
-*/
-void	*ft_calloc(size_t len, size_t size)
+ssize_t	get_current_time(void)
 {
-	size_t	bytes;
-	void	*alloc;
+	struct timeval	time;
 
-	bytes = len * size;
-	if (((bytes != 0) && (bytes < len || bytes < size)))
-		return (NULL);
-	alloc = malloc(bytes);
-	if (!alloc)
-		return (NULL);
-	return (ft_fbzero(alloc, bytes));
+	if (gettimeofday(&time, NULL) == -1)
+		return (-1);
+	return ((time.tv_sec * 1000) + (time.tv_usec / 1000));
 }
