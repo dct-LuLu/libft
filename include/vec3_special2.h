@@ -6,7 +6,7 @@
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 08:08:56 by jaubry--          #+#    #+#             */
-/*   Updated: 2025/08/07 01:35:09 by jaubry--         ###   ########lyon.fr   */
+/*   Updated: 2025/08/15 22:27:10 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,10 @@ static inline t_vec3	vec3_clamp(const t_vec3 v, const float mn,
 						const float mx)
 {
 	return ((t_vec3){{
-				clamp_branchless(v.x, mn, mx),
-				clamp_branchless(v.y, mn, mx),
-				clamp_branchless(v.z, mn, mx)
-			}});
+			clamp_branchless(v.x, mn, mx),
+			clamp_branchless(v.y, mn, mx),
+			clamp_branchless(v.z, mn, mx)
+		}});
 }
 
 #endif
