@@ -6,7 +6,7 @@
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 08:08:56 by jaubry--          #+#    #+#             */
-/*   Updated: 2025/08/21 20:19:21 by jaubry--         ###   ########.fr       */
+/*   Updated: 2025/08/21 21:10:27 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static inline t_vec3	vec3_normalize(const t_vec3 v)
 */
 static inline t_vec3	unsafe_vec3_normalize(const t_vec3 v)
 {
-	return (vec3_scale(v, vec3_length(v)));
+	return (vec3_div_scalar(v, vec3_length(v)));
 }
 
 static inline float	clamp_branchless(const float val, const float min,
