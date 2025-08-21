@@ -22,3 +22,25 @@ ssize_t	get_current_time(void)
 		return (-1);
 	return ((time.tv_sec * 1000) + (time.tv_usec / 1000));
 }
+
+ssize_t    get_cpu_time(void)
+{
+    int        fd;
+    char    tab[200];
+    size_t    i;
+
+    fd = open("/proc/self/sched", O_RDONLY);
+	if (fd == -1)
+		return (-1);
+    if (read(fd, tab, 200) == -1)
+    {
+        close(fd);
+        return (-1);
+    }
+    i = 140;
+    while (ft_isdigit(tab[i]) == 0)
+        ++i;
+    if (close(fd) == -1)
+        return (-1);
+    return (ft_atoi(tab + i));
+}
