@@ -30,6 +30,14 @@ static inline t_vec3	vec3_normalize(const t_vec3 v)
 	return (vec3_div_scalar(v, len));
 }
 
+/*
+	Normalize a vector, vec_len must not be 0.
+*/
+static inline t_vec3	unsafe_vec3_normalize(const t_vec3 v)
+{
+	return (vec3_div_scalar(v, vec3_length(v)));
+}
+
 static inline t_vec3	fast_vec3_normalize(const t_vec3 v)
 {
 	const float	len_sq = vec3_length2(v);
