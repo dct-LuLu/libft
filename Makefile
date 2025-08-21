@@ -6,7 +6,7 @@
 #    By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/27 01:19:17 by jaubry--          #+#    #+#              #
-#    Updated: 2025/08/15 22:29:38 by jaubry--         ###   ########.fr        #
+#    Updated: 2025/08/21 20:26:28 by jaubry--         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,14 +29,15 @@ CFLAGS		= -Wall -Wextra -Werror
 DFLAGS		= -MMD -MP -MF $(DEPDIR)/$*.d
 IFLAGS		= -I$(INCDIR)
 
-VFLAGS		= -D DEBUG=$(DEBUG)
+VARS		= DEBUG=$(DEBUG)
+VFLAGS		= $(addprefix -D ,$(VARS))
 
 CFLAGS		+= $(DEBUG_FLAGS) $(FFLAGS) $(VFLAGS)
 CF			= $(CC) $(CFLAGS) $(IFLAGS)
 
-AR          = $(if $(findstring -flto,$(CC)),llvm-ar,ar) $(SILENCE)
+AR          = $(if $(findstring -flto,$(FFLAGS)),$(FAST_AR),$(STD_AR))
 ARFLAGS		= rcs
-RANLIB      = $(if $(findstring -flto,$(CC)),llvm-ranlib,ranlib) $(SILENCE)
+RANLIB      = $(if $(findstring -flto,$(FFLAGS)),$(FAST_RANLIB),$(STD_RANLIB))
 
 # VPATH
 vpath %.h $(INCDIR)
