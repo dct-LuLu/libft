@@ -6,7 +6,7 @@
 /*   By: jaubry-- <jaubry--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 12:38:46 by jaubry--          #+#    #+#             */
-/*   Updated: 2025/10/09 15:09:21 by jaubry--         ###   ########.fr       */
+/*   Updated: 2025/10/15 18:39:48 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,12 @@ typedef enum e_lft_err
     LFT_E_VEC_REALLOC,
     LFT_E_CALC_S,
     LFT_E_REALLOC,
+    LFT_E_NOT_FLT,
+    LFT_E_NOT_INT,
+    LFT_E_FLT_RANGE,
+    LFT_E_INT_RANGE,
+    LFT_E_WRN_CHAR,
+	LFT_E_WRN_NEWLINE,
     LFT_ERRS_NUM
 }	t_lft_err;
 
@@ -56,6 +62,13 @@ typedef enum e_lft_err
 #define LFT_E_MSG_VEC_REALLOC "Could not realloc vector"
 #define LFT_E_MSG_CALC_S "Invalid calloc size"
 #define LFT_E_MSG_REALLOC "Could not realloc %d to %d at adress %p"
+
+#define LFT_E_MSG_NOT_FLT "Invalid float, line: %d"
+#define LFT_E_MSG_NOT_INT "Invalid integer, line: %d"
+#define LFT_E_MSG_FLT_RANGE "Float not in range [%d:%d], line: %d"
+#define LFT_E_MSG_INT_RANGE "Integer not in range [%d:%d], line: %d"
+#define LFT_E_MSG_WRN_CHAR "`%c` is not a valid character, expecting `%c`"
+#define LFT_E_MSG_WRN_NEWLINE "`%c` is not a valid character, expecting \"%s\""
 
 void	register_lft_errors(void);
 
