@@ -6,7 +6,7 @@
 /*   By: pabellis <pabellis@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 00:11:43 by pabellis          #+#    #+#             */
-/*   Updated: 2025/08/07 09:32:13 by jaubry--         ###   ########.fr       */
+/*   Updated: 2025/10/15 18:46:22 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,11 @@ static int	verif_char(const char *format, const char **line, int line_num)
 	{
 		if (line_num == -1)
 			return (-1);
+		if (*format == '\n')
+		{
+			register_complex_err_msg(LFT_E_MSG_WRN_NEWLINE, **line, "newline");
+			return (error(pack_err(LFT_ID, LFT_E_WRN_NEWLINE), FL, LN, FC));
+		}
 		register_complex_err_msg(LFT_E_MSG_WRN_CHAR, **line, *format);
 		return (error(pack_err(LFT_ID, LFT_E_WRN_CHAR), FL, LN, FC));
 	}

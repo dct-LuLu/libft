@@ -6,7 +6,7 @@
 /*   By: jaubry-- <jaubry--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 12:41:05 by jaubry--          #+#    #+#             */
-/*   Updated: 2025/10/09 15:10:51 by jaubry--         ###   ########.fr       */
+/*   Updated: 2025/10/15 18:47:03 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ void	register_lft_errors(void)
 		LFT_E_MSG_NOT_INT,
 		LFT_E_MSG_FLT_RANGE,
 		LFT_E_MSG_INT_RANGE,
-		LFT_E_MSG_WRN_CHAR
+		LFT_E_MSG_WRN_CHAR,
+		LFT_E_MSG_WRN_NEWLINE
 	};
 	bulk_register_error(LFT_ERRS_NUM - 1, LFT_ID, (const char **)err_msgs);
 }
