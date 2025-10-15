@@ -6,7 +6,7 @@
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 07:36:56 by jaubry--          #+#    #+#             */
-/*   Updated: 2025/10/09 20:47:26 by jaubry--         ###   ########.fr       */
+/*   Updated: 2025/10/16 00:43:38 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -297,6 +297,11 @@ void	remove_vector_elem(t_vector *vector, size_t i);
 /* ------------------------------- Time utils ------------------------------- */
 
 ssize_t	get_current_time(void);
+
+/* ------------------------------- Math utils ------------------------------- */
+
+int	min(int a, int b);
+int	max(int a, int b);
 
 /* ---------------------- Quadratic bezier curve utils ---------------------- */
 
