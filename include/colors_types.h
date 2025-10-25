@@ -6,7 +6,7 @@
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 02:54:43 by jaubry--          #+#    #+#             */
-/*   Updated: 2025/10/20 21:42:04 by jaubry--         ###   ########.fr       */
+/*   Updated: 2025/10/25 07:57:05 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ typedef union u_rgba
 {
 	struct
 	{
-		float	r;
-		float	g;
 		float	b;
+		float	g;
+		float	r;
 		float	a;
 	};
 	float		data[4];
@@ -57,9 +57,9 @@ typedef union u_rgba_int
 {
 	struct
 	{
-		uint8_t	r;
-		uint8_t	g;
 		uint8_t	b;
+		uint8_t	g;
+		uint8_t	r;
 		uint8_t	a;
 	};
 	uint8_t		data[4];
@@ -68,13 +68,13 @@ typedef union u_rgba_int
 
 static inline t_rgb	rgb(const float r, const float g, const float b)
 {
-	return ((t_rgb){{r, g, b}});
+	return ((t_rgb){{b, g, r}});
 }
 
 static inline t_rgba	rgba(const float r, const float g,
 							const float b, const float a)
 {
-	return ((t_rgba){{r, g, b, a}});
+	return ((t_rgba){{b, g, r, a}});
 }
 
 static inline t_rgb_int	rgb_int(const uint8_t r, const uint8_t g,
@@ -91,7 +91,7 @@ static inline t_rgb_int	drgb_int(const uint32_t rgb)
 static inline t_rgba_int	rgba_int(const uint8_t r, const uint8_t g,
 								const uint8_t b, const uint8_t a)
 {
-	return ((t_rgba_int){{r, g, b, a}});
+	return ((t_rgba_int){{b, g, r, a}});
 }
 
 #endif//COLORS_TYPES_H
