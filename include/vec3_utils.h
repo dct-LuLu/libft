@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vectors_conversion.h                               :+:      :+:    :+:   */
+/*   vec3_utils.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/21 06:52:43 by jaubry--          #+#    #+#             */
-/*   Updated: 2025/10/21 07:02:55 by jaubry--         ###   ########.fr       */
+/*   Created: 2025/10/27 11:49:57 by jaubry--          #+#    #+#             */
+/*   Updated: 2025/10/27 11:51:00 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VECTORS_CONVERSION_H
-# define VECTORS_CONVERSION_H
+#ifndef VEC3_UTILS_H
+# define VEC3_UTILS_H
 
-# include "vectors.h"
+# include <math.h>
+# include "vectors_types.h"
 
-static inline t_vec2	vec2_itof(const t_vec2i v)
+static inline t_vec3 vec3_max(const t_vec3 a, const t_vec3 b)
 {
-	return ((t_vec2){{
-			(float)v.x,
-			(float)v.y
-			}});
+	return (vec3(fmax(a.x, b.x), fmax(a.y, b.y), fmax(a.z, b.z)));
 }
 
-#endif// VECTORS_CONVERSION_H
+static inline t_vec3 vec3_min(const t_vec3 a, const t_vec3 b)
+{
+	return (vec3(fmin(a.x, b.x), fmin(a.y, b.y), fmin(a.z, b.z)));
+}
+
+#endif//VEC3_UTILS_H

@@ -1,41 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec2i_special.h                                    :+:      :+:    :+:   */
+/*   vec2i_utils.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/21 00:42:14 by jaubry--          #+#    #+#             */
-/*   Updated: 2025/10/27 11:45:51 by jaubry--         ###   ########.fr       */
+/*   Created: 2025/10/27 11:44:59 by jaubry--          #+#    #+#             */
+/*   Updated: 2025/10/27 11:49:19 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VEC2I_SPECIAL_H
 # define VEC2I_SPECIAL_H
 
-# include <math.h>
 # include "vectors_types.h"
+# include "utils.h"
 
-static inline float	vec2i_len2(const t_vec2i v)
+static inline t_vec2i vec2i_max(const t_vec2i a, const t_vec2i b)
 {
-	return ((float)(v.x * v.x + v.y * v.y));
+	return (vec2i(max(a.x, b.x), max(a.y, b.y)));
 }
 
-static inline float	vec2i_len(const t_vec2i v)
+static inline t_vec2i vec2i_min(const t_vec2i a, const t_vec2i b)
 {
-	return (sqrtf(vec2i_len2(v)));
+	return (vec2i(min(a.x, b.x), min(a.y, b.y)));
 }
 
-static inline float	vec2i_dist2(const t_vec2i a, const t_vec2i b)
-{
-	const t_vec2i	d = vec2i_sub(a, b);
-
-	return (vec2i_len2(d));
-}
-
-static inline float	vec2i_dist(const t_vec2i a, const t_vec2i b)
-{
-	return (sqrtf(vec2i_dist2(a, b)));
-}
-
-#endif// VEC2I_SPECIAL_H
+#endif//VEC2I_SPECIAL_H

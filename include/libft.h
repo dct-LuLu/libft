@@ -6,7 +6,7 @@
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 07:36:56 by jaubry--          #+#    #+#             */
-/*   Updated: 2025/10/16 00:43:38 by jaubry--         ###   ########.fr       */
+/*   Updated: 2025/10/27 10:17:33 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include "xcerrcal.h"
 # include "lft_xcerrcal.h"
 # include "vectors.h"
+# include "utils.h"
 
 # define VECTOR_BASE_SIZE 128
 
@@ -286,31 +287,5 @@ int		vector_realloc(t_vector *vector);
 int		set_vector_size(t_vector *vector, size_t size);
 
 void	remove_vector_elem(t_vector *vector, size_t i);
-//
-//
-//
 
-/* -------------------------------------------------------------------------- */
-/*                                   Utils                                    */
-/* -------------------------------------------------------------------------- */
-
-/* ------------------------------- Time utils ------------------------------- */
-
-ssize_t	get_current_time(void);
-
-/* ------------------------------- Math utils ------------------------------- */
-
-int	min(int a, int b);
-int	max(int a, int b);
-
-/* ---------------------- Quadratic bezier curve utils ---------------------- */
-
-t_vec2i	quad_bezier_pt(const t_vec2i start, const t_vec2i ctrl,
-			const t_vec2i end, const float t);
-
-float	quad_bezier_res(const t_vec2i start, const t_vec2i ctrl,
-			const t_vec2i end);
-
-float	quad_curve_length(const t_vec2i start, const t_vec2i ctrl,
-			const t_vec2i end);
 #endif
