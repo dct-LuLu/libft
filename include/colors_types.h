@@ -6,7 +6,7 @@
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 02:54:43 by jaubry--          #+#    #+#             */
-/*   Updated: 2025/10/25 07:57:05 by jaubry--         ###   ########.fr       */
+/*   Updated: 2025/11/27 03:22:27 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,11 @@ static inline t_rgba_int	rgba_int(const uint8_t r, const uint8_t g,
 								const uint8_t b, const uint8_t a)
 {
 	return ((t_rgba_int){{b, g, r, a}});
+}
+
+static inline t_rgba_int	drgba_int(const uint32_t rgba)
+{
+	return ((t_rgba_int){.rgba=rgba});
 }
 
 #endif//COLORS_TYPES_H
