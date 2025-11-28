@@ -6,7 +6,7 @@
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 08:10:16 by jaubry--          #+#    #+#             */
-/*   Updated: 2025/08/07 01:39:17 by jaubry--         ###   ########lyon.fr   */
+/*   Updated: 2025/11/28 22:34:59 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,19 +50,19 @@ static inline t_rgb_int	rgb_ftoi(const t_rgb rgb)
 */
 static inline t_rgb	rgb_itof(const t_rgb_int rgb)
 {
-	return (rgb_clamp((t_vec3){{
-					(float)rgb.b * INV_255,
+	return (rgb_clamp((t_rgb){{
+					(float)rgb.r * INV_255,
 					(float)rgb.g * INV_255,
-					(float)rgb.r * INV_255
+					(float)rgb.b * INV_255
 				}}, 0.f, 1.f));
 }
 
 static inline t_rgb	get_real_ratio(const t_rgb_int rgb, float ratio)
 {
-	return (rgb_clamp(rgb_scale((t_vec3){{
-						(float)rgb.b * INV_255,
+	return (rgb_clamp(rgb_scale((t_rgb){{
+						(float)rgb.r * INV_255,
 						(float)rgb.g * INV_255,
-						(float)rgb.r * INV_255
+						(float)rgb.b * INV_255
 					}}, ratio), 0.f, 1.f));
 }
 
