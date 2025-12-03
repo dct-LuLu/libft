@@ -6,7 +6,7 @@
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 08:10:16 by jaubry--          #+#    #+#             */
-/*   Updated: 2025/11/28 22:34:59 by jaubry--         ###   ########.fr       */
+/*   Updated: 2025/12/01 06:01:50 by pabellis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,15 @@ static inline t_rgb	get_real_ratio(const t_rgb_int rgb, float ratio)
 						(float)rgb.g * INV_255,
 						(float)rgb.b * INV_255
 					}}, ratio), 0.f, 1.f));
+}
+
+static inline t_vec3	rgb3_lerp(const t_vec3 a, const t_vec3 b, const t_vec3 t)
+{
+	return ((t_vec3){{
+				a.x * (1.0f - t.x) + b.x * t.x,
+				a.y * (1.0f - t.y) + b.y * t.y,
+				a.z * (1.0f - t.z) + b.z * t.z
+			}});
 }
 
 #endif
