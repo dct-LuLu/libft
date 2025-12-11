@@ -6,7 +6,7 @@
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 08:08:56 by jaubry--          #+#    #+#             */
-/*   Updated: 2025/08/15 22:27:10 by jaubry--         ###   ########.fr       */
+/*   Updated: 2025/12/01 02:46:52 by pabellis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,20 @@ static inline t_vec3	vec3_normalize(const t_vec3 v)
 	return (vec3_div_scalar(v, len));
 }
 
-static inline t_vec3	fast_vec3_normalize(const t_vec3 v)
+static inline t_vec3	get_tangent(t_vec3 n)
 {
-	const float	len_sq = vec3_length2(v);
-	float		inv_len;
+	t_vec3	up;
 
-	if (len_sq == 0.0f)
-		return (v);
-	inv_len = 1.0f / sqrtf(len_sq);
-	return (vec3_scale(v, inv_len));
+	if (fabsf(n.y) > 0.999f)
+		up = vec3(1, 0, 0);
+	else
+		up = vec3(0, 1, 0);
+	return (vec3_normalize(vec3_cross(up, n)));
+}
+
+static inline t_vec3 get_bitangent(t_vec3 n, t_vec3 tangent)
+{
+	return (vec3_cross(n, tangent));
 }
 
 static inline float	clamp_branchless(const float val, const float min,
@@ -51,10 +56,10 @@ static inline t_vec3	vec3_clamp(const t_vec3 v, const float mn,
 						const float mx)
 {
 	return ((t_vec3){{
-			clamp_branchless(v.x, mn, mx),
-			clamp_branchless(v.y, mn, mx),
-			clamp_branchless(v.z, mn, mx)
-		}});
+				clamp_branchless(v.x, mn, mx),
+				clamp_branchless(v.y, mn, mx),
+				clamp_branchless(v.z, mn, mx)
+			}});
 }
 
 #endif

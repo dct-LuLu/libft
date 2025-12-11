@@ -6,7 +6,7 @@
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 02:49:26 by jaubry--          #+#    #+#             */
-/*   Updated: 2025/08/06 23:07:30 by jaubry--         ###   ########lyon.fr   */
+/*   Updated: 2025/11/28 22:56:51 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,11 @@ typedef union u_vec2
 		float	x;
 		float	y;
 	};
+	struct
+	{
+		float	u;
+		float	v;
+	};
 	float		data[2];
 }	t_vec2;
 
@@ -60,6 +65,12 @@ typedef union u_vec3
 		float	r;
 		float	g;
 		float	b;
+	};
+	struct
+	{
+		float	u;
+		float	v;
+		float	w;
 	};
 	float		data[3];
 }	t_vec3;

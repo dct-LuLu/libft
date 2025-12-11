@@ -6,7 +6,7 @@
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 07:36:56 by jaubry--          #+#    #+#             */
-/*   Updated: 2025/10/09 18:06:55 by jaubry--         ###   ########.fr       */
+/*   Updated: 2025/11/01 16:31:31 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include "xcerrcal.h"
 # include "lft_xcerrcal.h"
 # include "vectors.h"
+# include "utils.h"
 
 # define VECTOR_BASE_SIZE 128
 
@@ -182,6 +183,8 @@ int		ft_dprintf(int fd, const char *format, ...);
 int		ft_vdprintf(int fd, const char *format, va_list ap);
 
 /* ---------------------------------- Input --------------------------------- */
+# define BUFFER_SIZE 256
+# define MAX_FD 1024
 char	*get_next_line(int fd);
 typedef struct s_limits
 {
@@ -278,32 +281,13 @@ int		vector_add(t_vector *vector, void *element, size_t elem_count);
 void	*get_vector_value(t_vector *vector, size_t i);
 void	*get_last_vector_value(t_vector *vector);
 
+size_t	get_vector_index(t_vector *vector, void *el);
+
 void	free_vector(t_vector *vector);
 int		vector_realloc(t_vector *vector);
 
 int		set_vector_size(t_vector *vector, size_t size);
 
 void	remove_vector_elem(t_vector *vector, size_t i);
-//
-//
-//
 
-/* -------------------------------------------------------------------------- */
-/*                                   Utils                                    */
-/* -------------------------------------------------------------------------- */
-
-/* ------------------------------- Time utils ------------------------------- */
-
-ssize_t	get_current_time(void);
-
-/* ---------------------- Quadratic bezier curve utils ---------------------- */
-
-t_vec2i	quad_bezier_pt(const t_vec2i start, const t_vec2i ctrl,
-			const t_vec2i end, const float t);
-
-float	quad_bezier_res(const t_vec2i start, const t_vec2i ctrl,
-			const t_vec2i end);
-
-float	quad_curve_length(const t_vec2i start, const t_vec2i ctrl,
-			const t_vec2i end);
 #endif

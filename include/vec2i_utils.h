@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   time_utils.c                                       :+:      :+:    :+:   */
+/*   vec2i_utils.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/16 00:06:47 by jaubry--          #+#    #+#             */
-/*   Updated: 2025/10/09 17:07:34 by jaubry--         ###   ########.fr       */
+/*   Created: 2025/10/27 11:44:59 by jaubry--          #+#    #+#             */
+/*   Updated: 2025/10/27 11:49:19 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <sys/types.h>
-#include <sys/time.h>
+#ifndef VEC2I_SPECIAL_H
+# define VEC2I_SPECIAL_H
 
-ssize_t	get_current_time(void)
+# include "vectors_types.h"
+# include "utils.h"
+
+static inline t_vec2i vec2i_max(const t_vec2i a, const t_vec2i b)
 {
-	struct timeval	time;
-
-	if (gettimeofday(&time, NULL) == -1)
-		return (-1);
-	return ((time.tv_sec * 1000) + (time.tv_usec / 1000));
+	return (vec2i(max(a.x, b.x), max(a.y, b.y)));
 }
+
+static inline t_vec2i vec2i_min(const t_vec2i a, const t_vec2i b)
+{
+	return (vec2i(min(a.x, b.x), min(a.y, b.y)));
+}
+
+#endif//VEC2I_SPECIAL_H

@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   time_utils.c                                       :+:      :+:    :+:   */
+/*   math_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/16 00:06:47 by jaubry--          #+#    #+#             */
-/*   Updated: 2025/10/09 17:07:34 by jaubry--         ###   ########.fr       */
+/*   Created: 2025/10/16 00:42:27 by jaubry--          #+#    #+#             */
+/*   Updated: 2025/10/16 00:43:00 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <sys/types.h>
-#include <sys/time.h>
-
-ssize_t	get_current_time(void)
+int	min(int a, int b)
 {
-	struct timeval	time;
+	if (a < b)
+		return (a);
+	return (b);
+}
 
-	if (gettimeofday(&time, NULL) == -1)
-		return (-1);
-	return ((time.tv_sec * 1000) + (time.tv_usec / 1000));
+int	max(int a, int b)
+{
+	if (a > b)
+		return (a);
+	return (b);
 }

@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   time_utils.c                                       :+:      :+:    :+:   */
+/*   vec3_utils.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/16 00:06:47 by jaubry--          #+#    #+#             */
-/*   Updated: 2025/10/09 17:07:34 by jaubry--         ###   ########.fr       */
+/*   Created: 2025/10/27 11:49:57 by jaubry--          #+#    #+#             */
+/*   Updated: 2025/10/27 11:51:00 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <sys/types.h>
-#include <sys/time.h>
+#ifndef VEC3_UTILS_H
+# define VEC3_UTILS_H
 
-ssize_t	get_current_time(void)
+# include <math.h>
+# include "vectors_types.h"
+
+static inline t_vec3 vec3_max(const t_vec3 a, const t_vec3 b)
 {
-	struct timeval	time;
-
-	if (gettimeofday(&time, NULL) == -1)
-		return (-1);
-	return ((time.tv_sec * 1000) + (time.tv_usec / 1000));
+	return (vec3(fmax(a.x, b.x), fmax(a.y, b.y), fmax(a.z, b.z)));
 }
+
+static inline t_vec3 vec3_min(const t_vec3 a, const t_vec3 b)
+{
+	return (vec3(fmin(a.x, b.x), fmin(a.y, b.y), fmin(a.z, b.z)));
+}
+
+#endif//VEC3_UTILS_H

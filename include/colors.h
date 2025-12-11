@@ -6,7 +6,7 @@
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 08:30:28 by jaubry--          #+#    #+#             */
-/*   Updated: 2025/08/06 08:31:30 by jaubry--         ###   ########lyon.fr   */
+/*   Updated: 2025/10/20 21:28:00 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define COLORS_H
 
 # include "colors_types.h"
+# include "colors_conversion.h"
 # include "rgb_operations.h"
 # include "rgb_scalar.h"
 # include "rgb_special1.h"
