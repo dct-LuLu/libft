@@ -34,6 +34,11 @@ typedef union u_vec2
 		float	x;
 		float	y;
 	};
+	struct
+	{
+		float	u;
+		float	v;
+	};
 	float		data[2];
 }	t_vec2;
 
@@ -60,6 +65,12 @@ typedef union u_vec3
 		float	r;
 		float	g;
 		float	b;
+	};
+	struct
+	{
+		float	u;
+		float	v;
+		float	w;
 	};
 	float		data[3];
 }	t_vec3;
