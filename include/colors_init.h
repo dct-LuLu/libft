@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec4i_utils.h                                      :+:      :+:    :+:   */
+/*   colors_init.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/27 11:47:42 by jaubry--          #+#    #+#             */
-/*   Updated: 2025/12/23 18:47:41 by jaubry--         ###   ########.fr       */
+/*   Created: 2025/12/23 18:49:46 by jaubry--          #+#    #+#             */
+/*   Updated: 2025/12/23 18:55:27 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VEC4I_UTILS_H
-# define VEC4I_UTILS_H
+#ifndef COLORS_INIT_H
+# define COLORS_INIT_H
 
-# include "vectors_types.h"
-# include "utils.h"
+# include "colors.h"
 
-static inline t_vec4i	vec4i_max(const t_vec4i a, const t_vec4i b)
+static inline t_rgb_int	drgb_int(const uint32_t rgb)
 {
-	return (vec4i(max(a.x, b.x), max(a.y, b.y), max(a.z, b.z), max(a.w, b.w)));
+	return ((t_rgb_int){.rgb = rgb});
 }
 
-static inline t_vec4i	vec4i_min(const t_vec4i a, const t_vec4i b)
+static inline t_rgba_int	drgba_int(const uint32_t rgba)
 {
-	return (vec4i(min(a.x, b.x), min(a.y, b.y), min(a.z, b.z), min(a.w, b.w)));
+	return ((t_rgba_int){.rgba = rgba});
 }
 
-#endif//VEC4I_UTILSL_H
+#endif//COLORS_INIT_H

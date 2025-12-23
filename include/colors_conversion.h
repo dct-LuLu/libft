@@ -6,12 +6,12 @@
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 21:28:56 by jaubry--          #+#    #+#             */
-/*   Updated: 2025/12/22 01:23:59 by jaubry--         ###   ########.fr       */
+/*   Updated: 2025/12/23 18:53:46 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COLORS_CONVER_H
-# define COLORS_CONVER_H
+#ifndef COLORS_CONVERSION_H
+# define COLORS_CONVERSION_H
 
 # include "colors.h"
 
@@ -30,7 +30,7 @@ static inline t_rgba_int	ft_blend_colors(t_rgb_int mlx, t_rgba_int src)
 
 static inline t_rgba_int	ft_blend_raw_colors(uint32_t _mlx, t_rgba_int src)
 {
-	const t_rgb_int	mlx = (t_rgb_int){.rgb=_mlx};
+	const t_rgb_int	mlx = (t_rgb_int){.rgb = _mlx};
 	t_rgba_int		dst;
 	int				alpha_f;
 
@@ -42,4 +42,4 @@ static inline t_rgba_int	ft_blend_raw_colors(uint32_t _mlx, t_rgba_int src)
 	return (dst);
 }
 
-#endif//COLORS_CONVER_H
+#endif//COLORS_CONVERSION_H

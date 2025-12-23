@@ -6,7 +6,7 @@
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 10:16:47 by jaubry--          #+#    #+#             */
-/*   Updated: 2025/10/27 10:17:16 by jaubry--         ###   ########.fr       */
+/*   Updated: 2025/12/23 18:43:34 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ ssize_t	get_current_time(void);
 
 /* ------------------------------- Math utils ------------------------------- */
 
-int	min(int a, int b);
-int	max(int a, int b);
+int		min(int a, int b);
+int		max(int a, int b);
 
 /* ---------------------- Quadratic bezier curve utils ---------------------- */
 

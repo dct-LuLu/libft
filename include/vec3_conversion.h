@@ -6,7 +6,7 @@
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:54:14 by jaubry--          #+#    #+#             */
-/*   Updated: 2025/10/27 11:55:30 by jaubry--         ###   ########.fr       */
+/*   Updated: 2025/12/23 18:45:38 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static inline t_vec3	vec3_itof(const t_vec3i v)
 			(float)v.x,
 			(float)v.y,
 			(float)v.z
-			}});
+		}});
 }
 
 static inline t_vec3i	vec3_ftoi(const t_vec3 v)
@@ -31,7 +31,7 @@ static inline t_vec3i	vec3_ftoi(const t_vec3 v)
 			v.x,
 			v.y,
 			v.z
-			}});
+		}});
 }
 
 static inline t_vec3i	vec3_ftoi_round(const t_vec3 v)
@@ -40,7 +40,7 @@ static inline t_vec3i	vec3_ftoi_round(const t_vec3 v)
 			roundf(v.x),
 			roundf(v.y),
 			roundf(v.z)
-			}});
+		}});
 }
 
 #endif//VEC3_CONVERSION_H

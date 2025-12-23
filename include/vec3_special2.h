@@ -6,7 +6,7 @@
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 08:08:56 by jaubry--          #+#    #+#             */
-/*   Updated: 2025/12/01 02:46:52 by pabellis         ###   ########.fr       */
+/*   Updated: 2025/12/23 18:56:52 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static inline t_vec3	get_tangent(t_vec3 n)
 	return (vec3_normalize(vec3_cross(up, n)));
 }
 
-static inline t_vec3 get_bitangent(t_vec3 n, t_vec3 tangent)
+static inline t_vec3	get_bitangent(t_vec3 n, t_vec3 tangent)
 {
 	return (vec3_cross(n, tangent));
 }
@@ -56,10 +56,10 @@ static inline t_vec3	vec3_clamp(const t_vec3 v, const float mn,
 						const float mx)
 {
 	return ((t_vec3){{
-				clamp_branchless(v.x, mn, mx),
-				clamp_branchless(v.y, mn, mx),
-				clamp_branchless(v.z, mn, mx)
-			}});
+			clamp_branchless(v.x, mn, mx),
+			clamp_branchless(v.y, mn, mx),
+			clamp_branchless(v.z, mn, mx)
+		}});
 }
 
 #endif

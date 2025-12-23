@@ -6,7 +6,7 @@
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:56:09 by jaubry--          #+#    #+#             */
-/*   Updated: 2025/10/27 11:57:08 by jaubry--         ###   ########.fr       */
+/*   Updated: 2025/12/23 18:47:01 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static inline t_vec4	vec4_itof(const t_vec4i v)
 			(float)v.y,
 			(float)v.z,
 			(float)v.w
-			}});
+		}});
 }
 
 static inline t_vec4i	vec4_ftoi(const t_vec4 v)
@@ -33,7 +33,7 @@ static inline t_vec4i	vec4_ftoi(const t_vec4 v)
 			v.y,
 			v.z,
 			v.w
-			}});
+		}});
 }
 
 static inline t_vec4i	vec4_ftoi_round(const t_vec4 v)
@@ -43,7 +43,7 @@ static inline t_vec4i	vec4_ftoi_round(const t_vec4 v)
 			roundf(v.y),
 			roundf(v.z),
 			roundf(v.w)
-			}});
+		}});
 }
 
 #endif//VEC4_CONVERSION_H
