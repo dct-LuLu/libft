@@ -6,7 +6,7 @@
 /*   By: pabellis <pabellis@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 00:11:43 by pabellis          #+#    #+#             */
-/*   Updated: 2025/10/15 18:46:22 by jaubry--         ###   ########.fr       */
+/*   Updated: 2025/12/23 19:02:21 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,17 @@
 #include "lft_xcerrcal.h"
 
 static void			skip_wildcard(const char **line, char char_to_skip);
-int					parse_type(va_list *args, const char **line, int line_num, const char *format);
-static int			verif_char(const char *format, const char **line, int line_num);
+int					parse_type(va_list *args, const char **line,
+						int line_num, const char *format);
+static int			verif_char(const char *format,
+						const char **line, int line_num);
 static const char	*skip_range(const char *format);
 
-void	scan_optional_arg(va_list *args, const char **format, const char **line)
+void	scan_optional_arg(va_list *args, const char **format,
+		const char **line)
 {
-	va_list	copy;
 	const char	*line_backup;
+	va_list		copy;
 
 	line_backup = *line;
 	++*format;

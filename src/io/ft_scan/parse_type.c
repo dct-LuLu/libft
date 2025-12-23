@@ -6,7 +6,7 @@
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 04:44:01 by pabellis          #+#    #+#             */
-/*   Updated: 2025/08/06 07:20:41 by jaubry--         ###   ########.fr       */
+/*   Updated: 2025/12/23 19:03:31 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,13 @@
 #include <limits.h>
 #include "libft.h"
 
-float			parse_float(const char *line, int line_number, t_limits limits);
-int				parse_int(const char *line, int line_number, t_limits limits);
-static t_limits	limits(char type, const char *format);
-static const char		*get_end_token(const char *line, const char *format);
-char			*parse_str(const char *line);
+float				parse_float(const char *line, int line_number,
+						t_limits limits);
+int					parse_int(const char *line, int line_number,
+						t_limits limits);
+static t_limits		limits(char type, const char *format);
+static const char	*get_end_token(const char *line, const char *format);
+char				*parse_str(const char *line);
 
 int	parse_type(va_list *args, const char **line,
 	int line_num, const char *format)
