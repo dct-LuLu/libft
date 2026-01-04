@@ -6,7 +6,7 @@
 /*   By: pabellis <mail@bellissantpablo.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 00:00:22 by pabellis          #+#    #+#             */
-/*   Updated: 2025/03/18 00:00:25 by pabellis         ###   ########.fr       */
+/*   Updated: 2026/01/04 15:41:33 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*ft_strtok(char *s, const char *delim)
 	if (s)
 	{
 		str = s;
-		while (*str && ft_strchr(delim, *str) != NULL)
+		while (*str && (ft_strchr(delim, *str) != NULL))
 			++str;
 		if (*str == '\0')
 			return (NULL);

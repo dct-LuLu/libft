@@ -6,7 +6,7 @@
 /*   By: jaubry-- <jaubry--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 12:41:05 by jaubry--          #+#    #+#             */
-/*   Updated: 2025/12/23 19:00:04 by jaubry--         ###   ########.fr       */
+/*   Updated: 2026/01/04 12:53:30 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	register_lft_errors(void)
 		LFT_E_MSG_GNL,
 		LFT_E_MSG_CRITGNL,
 		LFT_E_MSG_VEC_RESIZE, LFT_E_MSG_VEC_ADD, LFT_E_MSG_VEC_REALLOC,
-		LFT_E_MSG_CALC_S,
+		LFT_E_MSG_ALOC_S,
 		LFT_E_MSG_REALLOC,
 		LFT_E_MSG_NOT_FLT, LFT_E_MSG_NOT_INT,
 		LFT_E_MSG_FLT_RANGE, LFT_E_MSG_INT_RANGE,

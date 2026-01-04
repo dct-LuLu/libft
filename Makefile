@@ -6,42 +6,46 @@
 #    By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/27 01:19:17 by jaubry--          #+#    #+#              #
-#    Updated: 2025/10/09 20:14:20 by jaubry--         ###   ########.fr        #
+#    Updated: 2026/01/04 21:39:09 by jaubry--         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ROOTDIR		?= .
 include $(ROOTDIR)/mkidir/make_utils.mk
 
+LIBNAME		= libft
+
 # Directories
-CDIR		= libft
+CDIR		= $(LIBNAME)
 SRCDIR		= src
-INCDIR		= include
 OBJDIR		= .obj
 DEPDIR		= .dep
 
 XCERRCALDIR	= $(LIBDIR)/xcerrcal
+LIBFTDIR	= $(LIBDIR)/libft
+
+# Includes
+include $(XCERRCALDIR)/includes.mk includes.mk
+
+INCLUDES	= $(INCDIRS_LIBFT) \
+			  $(addprefix $(XCERRCALDIR)/, $(INCDIRS_XCERRCAL))
 
 # Output
-NAME		= libft.a
+NAME		= $(LIBNAME).a
 XCERRCAL	= $(XCERRCALDIR)/libxcerrcal.a
 
 
 # Compiler and flags
 CC			= cc
 
-CFLAGS		= -Wall -Wextra -Werror
+CFLAGS		= -Wall -Wextra -Werror \
+			  -std=gnu11
 
 DFLAGS		= -MMD -MP -MF $(DEPDIR)/$*.d
 
-IFLAGS		= -I$(INCDIR) -I$(XCERRCALDIR)/include
+IFLAGS		= $(addprefix -I,$(INCLUDES))
 
-LFLAGS		= -L$(XCERRCALDIR) -lxcerrcal
-
-VARS		= DEBUG=$(DEBUG)
-VFLAGS		= $(addprefix -D ,$(VARS))
-
-CFLAGS		+= $(DEBUG_FLAGS) $(FFLAGS) $(VFLAGS)
+CFLAGS		+= $(INSPECT_FLAGS) $(PROFILE_FLAGS) $(FFLAGS)
 CF			= $(CC) $(CFLAGS) $(IFLAGS)
 
 AR          = $(if $(findstring -flto,$(FFLAGS)),$(FAST_AR),$(STD_AR))
@@ -49,7 +53,7 @@ ARFLAGS		= rcs
 RANLIB      = $(if $(findstring -flto,$(FFLAGS)),$(FAST_RANLIB),$(STD_RANLIB))
 
 # VPATH
-vpath %.h $(INCDIR) $(XCERRCALDIR)/$(INCDIR)
+vpath %.h $(INCLUDES)
 vpath %.o $(OBJDIR) $(XCERRCALDIR)/$(OBJDIR)
 vpath %.d $(DEPDIR) $(XCERRCALDIR)/$(DEPDIR)
 
@@ -74,7 +78,7 @@ endif
 	$(call ar-finish-msg)
 
 $(XCERRCAL):
-	@$(MAKE) -s -C $(XCERRCALDIR) $(RULE) $(VARS) ROOTDIR=../..
+	@$(MAKE) -s -C $(XCERRCALDIR) $(RULE) ROOTDIR=../..
 
 $(OBJDIR)/%.o: %.c | buildmsg $(OBJDIR) $(DEPDIR)
 	$(call lib-compile-obj-msg)

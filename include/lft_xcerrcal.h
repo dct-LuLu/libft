@@ -6,7 +6,7 @@
 /*   By: jaubry-- <jaubry--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 12:38:46 by jaubry--          #+#    #+#             */
-/*   Updated: 2025/12/23 18:42:49 by jaubry--         ###   ########.fr       */
+/*   Updated: 2026/01/04 12:51:40 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef enum e_lft_err
 	LFT_E_VEC_RESIZE,
 	LFT_E_VEC_ADD,
 	LFT_E_VEC_REALLOC,
-	LFT_E_CALC_S,
+	LFT_E_ALOC_S,
 	LFT_E_REALLOC,
 	LFT_E_NOT_FLT,
 	LFT_E_NOT_INT,
@@ -60,7 +60,7 @@ typedef enum e_lft_err
 # define LFT_E_MSG_VEC_RESIZE "Could not resize vector"
 # define LFT_E_MSG_VEC_ADD "Could not add element to vector"
 # define LFT_E_MSG_VEC_REALLOC "Could not realloc vector"
-# define LFT_E_MSG_CALC_S "Invalid calloc size"
+# define LFT_E_MSG_ALOC_S "Invalid allocation size"
 # define LFT_E_MSG_REALLOC "Could not realloc %d to %d at adress %p"
 
 # define LFT_E_MSG_NOT_FLT "Invalid float, line: %d"

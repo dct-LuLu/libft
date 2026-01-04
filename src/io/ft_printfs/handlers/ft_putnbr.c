@@ -6,11 +6,16 @@
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 18:58:10 by jaubry--          #+#    #+#             */
-/*   Updated: 2025/03/01 01:30:34 by jaubry--         ###   ########.fr       */
+/*   Updated: 2026/01/04 15:12:53 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printfs_utils.h"
+#include <sys/types.h>
+#include <stdbool.h>
+#include <stdarg.h>
+#include <unistd.h>
+
+ssize_t	ft_putchar(char c, int fd);
 
 static ssize_t	ft_recu_putnbr(long int nb, int fd)
 {

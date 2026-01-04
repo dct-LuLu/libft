@@ -6,11 +6,17 @@
 /*   By: lmarcucc <lucas@student.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 23:28:03 by jaubry--          #+#    #+#             */
-/*   Updated: 2025/05/14 08:22:48 by jaubry--         ###   ########.fr       */
+/*   Updated: 2026/01/04 15:16:47 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printfs_utils.h"
+#include <sys/types.h>
+#include <stdbool.h>
+#include <stdarg.h>
+#include <unistd.h>
+
+ssize_t	handler(va_list args, char specifier, int fd);
+ssize_t	ft_putchar(char c, int fd);
 
 int	ft_dprintf(int fd, const char *format, ...)
 {

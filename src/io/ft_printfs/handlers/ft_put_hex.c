@@ -6,11 +6,17 @@
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 20:53:51 by jaubry--          #+#    #+#             */
-/*   Updated: 2025/04/17 20:52:59 by jaubry--         ###   ########.fr       */
+/*   Updated: 2026/01/04 15:16:20 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printfs_utils.h"
+#include <sys/types.h>
+#include <stdbool.h>
+#include <stdarg.h>
+#include <unistd.h>
+
+ssize_t	ft_putchar(char c, int fd);
+ssize_t	ft_putstr_l(char *str, size_t len, int fd);
 
 static void	ft_fill(char *charset, bool maj)
 {
@@ -61,9 +67,4 @@ ssize_t	ft_put_ptr(long unsigned int ptr, int fd)
 		return (ft_putstr_l("(nil)", 5, fd));
 	else
 		return (ft_putstr_l("0x", 2, fd) + ft_put_hex(ptr, false, fd));
-}
-
-ssize_t	ft_put_unknown(char c, int fd)
-{
-	return (ft_putchar('%', fd) + ft_putchar(c, fd));
 }

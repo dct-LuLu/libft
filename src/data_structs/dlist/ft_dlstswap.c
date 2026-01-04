@@ -6,7 +6,7 @@
 /*   By: lucas <lucas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 17:44:39 by lucas             #+#    #+#             */
-/*   Updated: 2025/03/08 07:36:16 by jaubry--         ###   ########.fr       */
+/*   Updated: 2026/01/04 13:11:57 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_dlstswap(t_dlist *l1, t_dlist *l2)
 {
 	void	*tmp;
 
-	if (!l1 || !l2 || l1 == l2)
+	if (!l1 || !l2 || (l1 == l2))
 		return ;
 	tmp = l1->content;
 	l1->content = l2->content;

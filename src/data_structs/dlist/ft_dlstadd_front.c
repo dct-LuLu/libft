@@ -6,7 +6,7 @@
 /*   By: lucas <lucas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 13:32:05 by lmarcucc          #+#    #+#             */
-/*   Updated: 2025/03/16 17:03:53 by jaubry--         ###   ########.fr       */
+/*   Updated: 2026/01/04 13:11:22 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_dlstadd_front(t_dlist **lst, t_dlist *new)
 {
-	if (!lst || !new || *lst == new)
+	if (!lst || !new || (*lst == new))
 		return ;
 	if (*lst)
 	{

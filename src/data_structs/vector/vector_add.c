@@ -6,7 +6,7 @@
 /*   By: pabellis <mail@bellissantpablo.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 01:56:30 by pabellis          #+#    #+#             */
-/*   Updated: 2025/02/12 03:33:36 by pabellis         ###   ########.fr       */
+/*   Updated: 2026/01/04 13:12:58 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	vector_add(t_vector *vector, void *element, size_t elem_count)
 {
 	void	*actual;
 
-	if (vector->num_elements + elem_count >= vector->max_elements)
+	if ((vector->num_elements + elem_count) >= vector->max_elements)
 	{
 		if (set_vector_size(vector, vector->num_elements + elem_count) == -1)
 			return (-1);

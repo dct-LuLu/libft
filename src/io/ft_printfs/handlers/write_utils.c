@@ -6,11 +6,14 @@
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 18:55:45 by jaubry--          #+#    #+#             */
-/*   Updated: 2025/03/01 01:30:41 by jaubry--         ###   ########.fr       */
+/*   Updated: 2026/01/04 15:16:30 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printfs_utils.h"
+#include <sys/types.h>
+#include <stdbool.h>
+#include <stdarg.h>
+#include <unistd.h>
 
 static size_t	ft_strlen(char *str)
 {

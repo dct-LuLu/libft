@@ -6,7 +6,7 @@
 /*   By: jaubry-- <jaubry--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 05:24:01 by jaubry--          #+#    #+#             */
-/*   Updated: 2025/04/17 20:50:26 by jaubry--         ###   ########.fr       */
+/*   Updated: 2026/01/04 13:01:03 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 static size_t	ft_itoalen(long int nb);
 
+/*
+	Return a string equivalent of the integer passed.
+*/
 char	*ft_itoa(int n)
 {
 	char		*str;

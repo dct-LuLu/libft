@@ -6,7 +6,7 @@
 /*   By: jaubry-- <jaubry--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 08:14:46 by jaubry--          #+#    #+#             */
-/*   Updated: 2025/04/17 20:50:20 by jaubry--         ###   ########.fr       */
+/*   Updated: 2026/01/04 12:57:49 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 
 static bool	will_overflow(long long a, int b);
 
+/*
+	Return the extracted integer value read from the passed string.
+*/
 int	ft_atoi(const char *str)
 {
 	size_t		i;
@@ -47,7 +50,6 @@ int	ft_atoi(const char *str)
 	an overflow otherwise 0
 	a can only be positive as well as b
 */
-
 static bool	will_overflow(long long a, int b)
 {
 	if (a)

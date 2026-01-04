@@ -6,7 +6,7 @@
 /*   By: jaubry-- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 14:44:00 by jaubry--          #+#    #+#             */
-/*   Updated: 2025/10/09 17:44:05 by jaubry--         ###   ########.fr       */
+/*   Updated: 2026/01/04 15:44:41 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	ft_count_words(char const *str, bool is_char(char))
 	while (str[i])
 	{
 		if ((!is_char(str[i]) && is_char(str[i + 1]))
-			|| (!is_char(str[i]) && str[i + 1] == 0))
+			|| (!is_char(str[i]) && (str[i + 1] == 0)))
 			words++;
 		i++;
 	}

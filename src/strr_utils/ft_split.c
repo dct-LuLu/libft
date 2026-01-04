@@ -6,7 +6,7 @@
 /*   By: lmarcucc <lucas@student.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 22:03:56 by lmarcucc          #+#    #+#             */
-/*   Updated: 2025/10/09 17:54:40 by jaubry--         ###   ########.fr       */
+/*   Updated: 2026/01/04 15:44:11 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,9 @@ static int	ft_count_words(char const *str, int c)
 	words = 0;
 	while (str[i])
 	{
-		if ((str[i] != c && str[i + 1] == c)
-			|| (str[i] != c && str[i + 1] == 0))
-		{
+		if (((str[i] != c) && (str[i + 1] == c))
+			|| ((str[i] != c) && (str[i + 1] == 0)))
 			words++;
-		}
 		i++;
 	}
 	return (words);

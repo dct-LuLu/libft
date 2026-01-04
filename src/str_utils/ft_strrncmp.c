@@ -6,7 +6,7 @@
 /*   By: pabellis <mail@bellissantpablo.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 03:29:33 by pabellis          #+#    #+#             */
-/*   Updated: 2025/04/09 03:29:36 by pabellis         ###   ########.fr       */
+/*   Updated: 2026/01/04 15:42:54 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_strrncmp(const char *s1, const char *s2, size_t n)
 	if (n > s1_len || n > s2_len)
 		n = fminf(s1_len, s2_len);
 	i = 0;
-	while (i < n - 1 && (s1[s1_len - i - 1] == s2[s2_len - i - 1]))
+	while ((i < (n - 1)) && (s1[s1_len - i - 1] == s2[s2_len - i - 1]))
 		++i;
 	return (s1[s1_len - i - 1] - s2[s2_len - i - 1]);
 }
