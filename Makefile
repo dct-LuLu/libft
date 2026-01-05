@@ -6,7 +6,7 @@
 #    By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/27 01:19:17 by jaubry--          #+#    #+#              #
-#    Updated: 2026/01/04 21:39:09 by jaubry--         ###   ########.fr        #
+#    Updated: 2026/01/05 07:24:45 by jaubry--         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,13 +16,12 @@ include $(ROOTDIR)/mkidir/make_utils.mk
 LIBNAME		= libft
 
 # Directories
-CDIR		= $(LIBNAME)
+CDIR		= libft
 SRCDIR		= src
 OBJDIR		= .obj
 DEPDIR		= .dep
 
 XCERRCALDIR	= $(LIBDIR)/xcerrcal
-LIBFTDIR	= $(LIBDIR)/libft
 
 # Includes
 include $(XCERRCALDIR)/includes.mk includes.mk
@@ -36,7 +35,7 @@ XCERRCAL	= $(XCERRCALDIR)/libxcerrcal.a
 
 
 # Compiler and flags
-CC			= cc
+CC			?= cc
 
 CFLAGS		= -Wall -Wextra -Werror \
 			  -std=gnu11
@@ -67,7 +66,8 @@ DEPS		= $(addprefix $(DEPDIR)/, $(notdir $(SRCS:.o=.d)))
 
 all:	$(NAME)
 fast:	$(NAME)
-debug:	$(NAME)
+inspect:$(NAME)
+profile:$(NAME)
 
 $(NAME): $(XCERRCAL) $(OBJS)
 	$(call ar-msg)

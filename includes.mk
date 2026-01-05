@@ -6,7 +6,7 @@
 #    By: jaubry-- <jaubry--@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/04 13:30:49 by jaubry--          #+#    #+#              #
-#    Updated: 2026/01/04 13:48:23 by jaubry--         ###   ########.fr        #
+#    Updated: 2026/01/05 07:42:13 by jaubry--         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,4 +22,4 @@ INCDIRS_LIBFT	= colors \
 				  vectors/vec4 \
 				  vectors/vec4i
 
-INCDIRS_LIBFT	:= $(INCDIR) $(addprefix $(INCDIR), $(INCDIRS_LIBFT))
+INCDIRS_LIBFT	:= $(INCDIR) $(addprefix $(INCDIR)/, $(INCDIRS_LIBFT))
