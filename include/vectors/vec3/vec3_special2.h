@@ -16,6 +16,7 @@
 # include <math.h>
 # include "vectors_types.h"
 # include "vec3_special1.h"
+# include "vec3_operations.h"
 
 /*
 	Normalize with zero-check to avoid division by zero
