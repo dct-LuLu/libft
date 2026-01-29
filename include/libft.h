@@ -6,7 +6,7 @@
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 07:36:56 by jaubry--          #+#    #+#             */
-/*   Updated: 2026/01/04 15:37:34 by jaubry--         ###   ########.fr       */
+/*   Updated: 2026/01/29 21:07:53 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@
 # include "xcerrcal.h"
 # include "lft_xcerrcal.h"
 # include "vectors.h"
+# include "matrices.h"
+# include "colors.h"
+# include "math_utils.h"
 # include "utils.h"
 
 # define VECTOR_BASE_SIZE 128

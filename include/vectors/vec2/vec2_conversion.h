@@ -6,15 +6,15 @@
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 06:52:43 by jaubry--          #+#    #+#             */
-/*   Updated: 2025/12/23 18:44:17 by jaubry--         ###   ########.fr       */
+/*   Updated: 2026/01/29 20:38:41 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VEC2_CONVERSION_H
 # define VEC2_CONVERSION_H
 
+# include "vectors_types.h"
 # include <math.h>
-# include "vectors.h"
 
 static inline t_vec2	vec2_itof(const t_vec2i v)
 {

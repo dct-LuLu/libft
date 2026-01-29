@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mat3.h                                             :+:      :+:    :+:   */
+/*   mat3_constructors.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 16:14:50 by jaubry--          #+#    #+#             */
-/*   Updated: 2026/01/29 16:22:22 by jaubry--         ###   ########.fr       */
+/*   Updated: 2026/01/29 23:18:47 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static inline t_mat3	mat3_identity(void)
 	}});
 }
 
-static inline t_mat3	mat3_rows(t_vec3 r0, t_vec3 r1, t_vec3 r2)
+static inline t_mat3	mat3_from_rows(t_vec3 r0, t_vec3 r1, t_vec3 r2)
 {
 	return ((t_mat3){.m = {
 		{r0.x, r0.y, r0.z},
@@ -40,7 +40,7 @@ static inline t_mat3	mat3_rows(t_vec3 r0, t_vec3 r1, t_vec3 r2)
 	}});
 }
 
-static inline t_mat3	mat3_cols(t_vec3 c0, t_vec3 c1, t_vec3 c2)
+static inline t_mat3	mat3_from_cols(t_vec3 c0, t_vec3 c1, t_vec3 c2)
 {
 	return ((t_mat3){.m = {
 		{c0.x, c1.x, c2.x},

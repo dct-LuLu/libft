@@ -6,7 +6,7 @@
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:51:05 by jaubry--          #+#    #+#             */
-/*   Updated: 2026/01/29 16:48:53 by jaubry--         ###   ########.fr       */
+/*   Updated: 2026/01/29 21:07:27 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <math.h>
 # include "vectors_types.h"
+# include <stdbool.h>
 
 static inline t_vec4	vec4_max(const t_vec4 a, const t_vec4 b)
 {
@@ -30,7 +31,7 @@ static inline t_vec4	vec4_min(const t_vec4 a, const t_vec4 b)
 
 static inline t_vec4	vec4_abs(t_vec4 v)
 {
-	return ((t_vec4){x = fabsf(v.x), y = fabsf(v.y), z = fabsf(v.z), w = fabsf(v.w)});
+	return ((t_vec4){.x = fabsf(v.x), .y = fabsf(v.y), .z = fabsf(v.z), .w = fabsf(v.w)});
 }
 
 static inline float	vec4_comp_max(t_vec4 v)

@@ -6,7 +6,7 @@
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:47:42 by jaubry--          #+#    #+#             */
-/*   Updated: 2026/01/29 16:45:56 by jaubry--         ###   ########.fr       */
+/*   Updated: 2026/01/29 21:07:34 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 # define VEC4I_UTILS_H
 
 # include "vectors_types.h"
-# include "utils.h"
+# include "math_utils.h"
+# include <stdbool.h>
 
 static inline t_vec4i	vec4i_max(const t_vec4i a, const t_vec4i b)
 {
@@ -28,7 +29,7 @@ static inline t_vec4i	vec4i_min(const t_vec4i a, const t_vec4i b)
 
 static inline t_vec4i	vec4i_abs(t_vec4i v)
 {
-	return ((t_vec4i){x = abs(v.x), y = abs(v.y), z = abs(v.z), w = abs(v.w)});
+	return ((t_vec4i){.x = abs(v.x), .y = abs(v.y), .z = abs(v.z), .w = abs(v.w)});
 }
 
 static inline int	vec4i_comp_max(t_vec4i v)

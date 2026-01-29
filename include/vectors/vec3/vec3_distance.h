@@ -1,38 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec4i_constructors.h                               :+:      :+:    :+:   */
+/*   vec3_distance.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/29 16:34:05 by jaubry--          #+#    #+#             */
-/*   Updated: 2026/01/29 20:41:18 by jaubry--         ###   ########.fr       */
+/*   Created: 2026/01/29 20:35:44 by jaubry--          #+#    #+#             */
+/*   Updated: 2026/01/29 20:39:56 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VEC4I_CONSTRUCTORS_H
-# define VEC4I_CONSTRUCTORS_H
+#ifndef VEC3_DISTANCE_H
+# define VEC3_DISTANCE_H
 
 # include "vectors_types.h"
 
-static inline t_vec4i	vec4i(const int x, const int y, const int z, const int w)
+static inline float	vec3_distance2(const t_vec3 a, const t_vec3 b)
 {
-	return ((t_vec4i){{x, y, z, w}});
+	return (vec3_length2(vec3_sub(a, b)));
 }
 
-static inline t_vec4i	vec4i_zero(void)
+static inline float	vec3_distance(const t_vec3 a, const t_vec3 b)
 {
-	return ((t_vec4i){{0, 0, 0, 0}});
+	return (sqrtf(vec3_distance2(a, b)));
 }
 
-static inline t_vec4i	vec4i_err(void)
-{
-	return ((t_vec4i){{-1, -1, -1, -1}});
-}
-
-static inline t_vec4i	vec4i_set(const int v)
-{
-	return ((t_vec4i){{v, v, v, v}});
-}
-
-#endif//VEC4I_CONSTRUCTORS_H
+#endif//VEC3_DISTANCE_H

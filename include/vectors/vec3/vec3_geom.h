@@ -1,38 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec4i_constructors.h                               :+:      :+:    :+:   */
+/*   vec3_geom.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/29 16:34:05 by jaubry--          #+#    #+#             */
-/*   Updated: 2026/01/29 20:41:18 by jaubry--         ###   ########.fr       */
+/*   Created: 2026/01/29 20:29:52 by jaubry--          #+#    #+#             */
+/*   Updated: 2026/01/29 20:39:59 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VEC4I_CONSTRUCTORS_H
-# define VEC4I_CONSTRUCTORS_H
+#ifndef VEC3_GEOM_H
+# define VEC3_GEOM_H
 
 # include "vectors_types.h"
 
-static inline t_vec4i	vec4i(const int x, const int y, const int z, const int w)
+static inline t_vec3	get_tangent(t_vec3 n)
 {
-	return ((t_vec4i){{x, y, z, w}});
+	t_vec3	up;
+
+	if (fabsf(n.y) > 0.999f)
+		up = vec3(1, 0, 0);
+	else
+		up = vec3(0, 1, 0);
+	return (vec3_normalize(vec3_cross(up, n)));
 }
 
-static inline t_vec4i	vec4i_zero(void)
+static inline t_vec3	get_bitangent(t_vec3 n, t_vec3 tangent)
 {
-	return ((t_vec4i){{0, 0, 0, 0}});
+	return (vec3_cross(n, tangent));
 }
 
-static inline t_vec4i	vec4i_err(void)
-{
-	return ((t_vec4i){{-1, -1, -1, -1}});
-}
-
-static inline t_vec4i	vec4i_set(const int v)
-{
-	return ((t_vec4i){{v, v, v, v}});
-}
-
-#endif//VEC4I_CONSTRUCTORS_H
+#endif//VEC3_GEOM_H

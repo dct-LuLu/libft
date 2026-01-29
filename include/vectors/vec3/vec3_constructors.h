@@ -6,13 +6,14 @@
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 16:24:24 by jaubry--          #+#    #+#             */
-/*   Updated: 2026/01/29 16:38:08 by jaubry--         ###   ########.fr       */
+/*   Updated: 2026/01/29 23:16:34 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VEC3_CONSTRUCTORS_H
 # define VEC3_CONSTRUCTORS_H
 
+# include <math.h>
 # include "vectors_types.h"
 
 static inline t_vec3	vec3(const float x, const float y, const float z)

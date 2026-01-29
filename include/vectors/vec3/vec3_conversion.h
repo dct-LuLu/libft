@@ -6,7 +6,7 @@
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:54:14 by jaubry--          #+#    #+#             */
-/*   Updated: 2025/12/23 18:45:38 by jaubry--         ###   ########.fr       */
+/*   Updated: 2026/01/29 20:39:45 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define VEC3_CONVERSION_H
 
 # include <math.h>
-# include "vectors.h"
+# include "vectors_types.h"
 
 static inline t_vec3	vec3_itof(const t_vec3i v)
 {

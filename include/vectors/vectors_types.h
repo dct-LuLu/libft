@@ -6,7 +6,7 @@
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 02:49:26 by jaubry--          #+#    #+#             */
-/*   Updated: 2026/01/19 10:18:32 by jaubry--         ###   ########.fr       */
+/*   Updated: 2026/01/29 21:58:47 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,20 @@ typedef union u_vec2i
 {
 	struct
 	{
-		int		x;
-		int		y;
+		int	x;
+		int	y;
 	};
-	int			data[2];
+	struct
+	{
+		int	k;
+		int	l;
+	};
+	struct
+	{
+		int	row;
+		int	col;
+	};
+	int		data[2];
 }	t_vec2i;
 
 # include <CL/cl.h>
@@ -105,6 +115,8 @@ typedef union u_vec4
 	};
 	float		data[4];
 }	t_vec4;
+
+typedef t_vec4 t_quat;
 
 typedef union u_vec4i
 {

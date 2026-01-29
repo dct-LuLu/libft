@@ -6,7 +6,7 @@
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:44:59 by jaubry--          #+#    #+#             */
-/*   Updated: 2026/01/29 16:50:20 by jaubry--         ###   ########.fr       */
+/*   Updated: 2026/01/29 21:07:07 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 # define VEC2I_UTILS_H
 
 # include "vectors_types.h"
-# include "utils.h"
+# include "math_utils.h"
+# include <stdbool.h>
 
 static inline t_vec2i	vec2i_max(const t_vec2i a, const t_vec2i b)
 {
@@ -28,7 +29,7 @@ static inline t_vec2i	vec2i_min(const t_vec2i a, const t_vec2i b)
 
 static inline t_vec2i	vec2i_abs(t_vec2i v)
 {
-	return ((t_vec2i){x = abs(v.x), y = abs(v.y)});
+	return ((t_vec2i){.x = abs(v.x), .y = abs(v.y)});
 }
 
 static inline int	vec2i_comp_max(t_vec2i v)

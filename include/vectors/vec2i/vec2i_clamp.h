@@ -6,7 +6,7 @@
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 18:02:33 by jaubry--          #+#    #+#             */
-/*   Updated: 2026/01/29 18:04:10 by jaubry--         ###   ########.fr       */
+/*   Updated: 2026/01/29 20:39:22 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define VEC2I_CLAMP_H
 
 # include "vectors_utils.h"
+# include "vectors_types.h"
 
 static inline t_vec2i	vec2i_clamp(const t_vec2i v, const int min,
 						const int max)

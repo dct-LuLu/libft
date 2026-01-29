@@ -6,7 +6,7 @@
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:44:00 by jaubry--          #+#    #+#             */
-/*   Updated: 2026/01/29 16:51:11 by jaubry--         ###   ########.fr       */
+/*   Updated: 2026/01/29 20:55:17 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static inline t_vec2	vec2_min(const t_vec2 a, const t_vec2 b)
 
 static inline t_vec2	vec2_abs(t_vec2 v)
 {
-	return ((t_vec2){x = fabsf(v.x), y = fabsf(v.y));
+	return ((t_vec2){.x = fabsf(v.x), .y = fabsf(v.y)});
 }
 
 static inline float	vec2_comp_max(t_vec2 v)

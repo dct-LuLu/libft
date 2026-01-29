@@ -1,23 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec2_products.h                                    :+:      :+:    :+:   */
+/*   mat3_utils.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/29 19:53:29 by jaubry--          #+#    #+#             */
-/*   Updated: 2026/01/29 20:39:07 by jaubry--         ###   ########.fr       */
+/*   Created: 2026/01/29 21:14:11 by jaubry--          #+#    #+#             */
+/*   Updated: 2026/01/29 21:14:25 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VEC2_PRODUCTS_H
-# define VEC2_PRODUCTS_H
+#ifndef MAT3_UTILS_H
+# define MAT3_UTILS_H
 
-# include "vectors_types.h"
-
-static inline float	vec2_dot(const t_vec2 a, const t_vec2 b)
-{
-	return ((a.x * b.x) + (a.y * b.y));
-}
-
-#endif//VEC2_PRODUCTS_H
+#endif//MAT3_UTILS_H

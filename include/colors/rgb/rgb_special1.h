@@ -6,7 +6,7 @@
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 08:12:21 by jaubry--          #+#    #+#             */
-/*   Updated: 2025/08/06 08:13:41 by jaubry--         ###   ########lyon.fr   */
+/*   Updated: 2026/01/29 21:01:34 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 # define RGB_SPECIAL1_H
 
 # include "colors_types.h"
-# include "vec3_special1.h"
-# include "vec3_special2.h"
+# include "vec3_normalize.h"
+# include "vec3_lerp.h"
+# include "vec3_products.h"
+# include "vec3_clamp.h"
 
 static inline float	rgb_dot(const t_rgb a, const t_rgb b)
 {

@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   math_utils.c                                       :+:      :+:    :+:   */
+/*   math_utils.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/16 00:42:27 by jaubry--          #+#    #+#             */
-/*   Updated: 2025/10/16 00:43:00 by jaubry--         ###   ########.fr       */
+/*   Created: 2026/01/29 21:05:42 by jaubry--          #+#    #+#             */
+/*   Updated: 2026/01/29 21:06:52 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	min(int a, int b)
+#ifndef MATH_UTILS_H
+# define MATH_UTILS_H
+
+static inline int	min(int a, int b)
 {
 	if (a < b)
 		return (a);
 	return (b);
 }
 
-int	max(int a, int b)
+static inline int	max(int a, int b)
 {
 	if (a > b)
 		return (a);
 	return (b);
 }
+
+#endif//MATH_UTILS_H

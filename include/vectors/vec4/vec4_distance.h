@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec2_products.h                                    :+:      :+:    :+:   */
+/*   vec4_distance.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/29 19:53:29 by jaubry--          #+#    #+#             */
-/*   Updated: 2026/01/29 20:39:07 by jaubry--         ###   ########.fr       */
+/*   Created: 2026/01/29 20:36:32 by jaubry--          #+#    #+#             */
+/*   Updated: 2026/01/29 20:36:53 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VEC2_PRODUCTS_H
-# define VEC2_PRODUCTS_H
+#ifndef VEC4_DISTANCE_H
+# define VEC4_DISTANCE_H
 
-# include "vectors_types.h"
-
-static inline float	vec2_dot(const t_vec2 a, const t_vec2 b)
+static inline float	vec4_distance2(const t_vec4 a, const t_vec4 b)
 {
-	return ((a.x * b.x) + (a.y * b.y));
+	return (vec4_length2(vec4_sub(a, b)));
 }
 
-#endif//VEC2_PRODUCTS_H
+static inline float	vec4_distance(const t_vec4 a, const t_vec4 b)
+{
+	return (sqrtf(vec4_distance2(a, b)));
+}
+
+#endif//VEC4_DISTANCE_H
