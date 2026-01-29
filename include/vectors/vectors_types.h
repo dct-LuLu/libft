@@ -6,7 +6,7 @@
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 02:49:26 by jaubry--          #+#    #+#             */
-/*   Updated: 2025/11/28 22:56:51 by jaubry--         ###   ########.fr       */
+/*   Updated: 2026/01/19 10:18:32 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,20 +27,22 @@ typedef enum e_vec_idx
 	VEC_W = 3
 }	t_vec_idx;
 
+/*
 typedef union u_vec2
 {
 	struct
-	{
-		float	x;
-		float	y;
-	};
-	struct
-	{
-		float	u;
-		float	v;
-	};
-	float		data[2];
+ 	{
+ 		float	x;
+ 		float	y;
+ 	};
+ 	struct
+ 	{
+ 		float	u;
+ 		float	v;
+ 	};
+ 	float		data[2];
 }	t_vec2;
+*/
 
 typedef union u_vec2i
 {
@@ -51,6 +53,11 @@ typedef union u_vec2i
 	};
 	int			data[2];
 }	t_vec2i;
+
+# include <CL/cl.h>
+typedef cl_float3 t_vec3;
+typedef cl_float2 t_vec2;
+/*
 
 typedef union u_vec3
 {
@@ -74,6 +81,7 @@ typedef union u_vec3
 	};
 	float		data[3];
 }	t_vec3;
+*/
 
 typedef union u_vec3i
 {

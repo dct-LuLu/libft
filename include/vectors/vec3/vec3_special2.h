@@ -6,7 +6,7 @@
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 08:08:56 by jaubry--          #+#    #+#             */
-/*   Updated: 2025/12/23 18:56:52 by jaubry--         ###   ########.fr       */
+/*   Updated: 2026/01/29 16:55:46 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static inline t_vec3	vec3_normalize(const t_vec3 v)
 	const float	len = vec3_length(v);
 
 	if (len == 0.0f)
-		return (v);
+		return (vec3_zero());
 	return (vec3_div_scalar(v, len));
 }
 

@@ -6,7 +6,7 @@
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 08:07:39 by jaubry--          #+#    #+#             */
-/*   Updated: 2025/12/23 18:56:37 by jaubry--         ###   ########.fr       */
+/*   Updated: 2026/01/29 17:05:41 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,30 @@ static inline float	vec3_length2(const t_vec3 v)
 static inline float	vec3_length(const t_vec3 v)
 {
 	return (sqrtf(vec3_length2(v)));
+}
+
+static inline float	vec3_length_safe(t_vec3 v)
+{
+	const t_vec3	a = vec3_abs(v);
+	const float		m = vec3_comp_max(a);
+	t_vec3			s;
+
+	if (m == 0.0f)
+		return (0.0f);
+	s = vec3_div_scalar(a, m);
+	return (m * sqrtf(vec3_length2(s)));
+}
+
+static inline t_vec3	vec3_normalize_safe(t_vec3 v)
+{
+	float	len;
+
+	if (!vec3_isfinite(v))
+		return (vec3_zero());
+	len = vec3_length_safe(v);
+	if (!(len > 0.0f) || !isfinite(len))
+		return (vec3_zero());
+	return (vec3_div_scalar(v, len));
 }
 
 static inline t_vec3	vec3_lerp(const t_vec3 a, const t_vec3 b, const float t)

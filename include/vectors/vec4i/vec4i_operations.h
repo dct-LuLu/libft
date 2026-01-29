@@ -6,7 +6,7 @@
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 08:02:49 by jaubry--          #+#    #+#             */
-/*   Updated: 2025/08/07 01:39:54 by jaubry--         ###   ########lyon.fr   */
+/*   Updated: 2026/01/29 16:34:25 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,6 @@
 # define VEC4I_OPERATIONS_H
 
 # include "vectors_types.h"
-
-static inline t_vec4i	vec4i(const int x, const int y, const int z,
-							const int w)
-{
-	return ((t_vec4i){{x, y, z, w}});
-}
 
 static inline t_vec4i	vec4i_add(const t_vec4i a, const t_vec4i b)
 {

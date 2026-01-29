@@ -6,7 +6,7 @@
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 08:10:16 by jaubry--          #+#    #+#             */
-/*   Updated: 2025/12/23 18:55:14 by jaubry--         ###   ########.fr       */
+/*   Updated: 2026/01/14 19:12:38 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ static inline uint8_t	clamp_float_to_byte(float val)
 static inline t_rgb_int	rgb_ftoi(const t_rgb rgb)
 {
 	return ((t_rgb_int){{
-			clamp_float_to_byte(rgb.b),
-			clamp_float_to_byte(rgb.g),
-			clamp_float_to_byte(rgb.r)
+			clamp_float_to_byte(rgb.z),
+			clamp_float_to_byte(rgb.y),
+			clamp_float_to_byte(rgb.x)
 		}});
 }
 

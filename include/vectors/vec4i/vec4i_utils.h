@@ -6,7 +6,7 @@
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:47:42 by jaubry--          #+#    #+#             */
-/*   Updated: 2025/12/23 18:47:41 by jaubry--         ###   ########.fr       */
+/*   Updated: 2026/01/29 16:45:56 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,16 @@ static inline t_vec4i	vec4i_max(const t_vec4i a, const t_vec4i b)
 static inline t_vec4i	vec4i_min(const t_vec4i a, const t_vec4i b)
 {
 	return (vec4i(min(a.x, b.x), min(a.y, b.y), min(a.z, b.z), min(a.w, b.w)));
+}
+
+static inline t_vec4i	vec4i_abs(t_vec4i v)
+{
+	return ((t_vec4i){x = abs(v.x), y = abs(v.y), z = abs(v.z), w = abs(v.w)});
+}
+
+static inline int	vec4i_comp_max(t_vec4i v)
+{
+	return (max(max(v.x, v.y), max(v.z, v.w)));
 }
 
 #endif//VEC4I_UTILSL_H

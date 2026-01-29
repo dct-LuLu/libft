@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec2_operations.h                                  :+:      :+:    :+:   */
+/*   vectors_utils.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/06 07:51:38 by jaubry--          #+#    #+#             */
-/*   Updated: 2026/01/29 16:28:20 by jaubry--         ###   ########.fr       */
+/*   Created: 2026/01/29 18:01:00 by jaubry--          #+#    #+#             */
+/*   Updated: 2026/01/29 18:02:13 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VEC2_OPERATIONS_H
-# define VEC2_OPERATIONS_H
+#ifndef VECTORS_UTILS_H
+# define VECTORS_UTILS_H
 
-# include "vectors_types.h"
-
-static inline t_vec2	vec2_add(const t_vec2 a, const t_vec2 b)
+static inline float	fclamp_branchless(const float val, const float min,
+						const float max)
 {
-	return ((t_vec2){{a.x + b.x, a.y + b.y}});
+	return (fminf(fmaxf(val, min), max));
 }
 
-static inline t_vec2	vec2_sub(const t_vec2 a, const t_vec2 b)
+static inline int	clamp_branchless(const int val, const int min,
+						const int max)
 {
-	return ((t_vec2){{a.x - b.x, a.y - b.y}});
+	return (min(max(val, min), max));
 }
 
-static inline t_vec2	vec2_mult(const t_vec2 a, const t_vec2 b)
-{
-	return ((t_vec2){{a.x * b.x, a.y * b.y}});
-}
-
-#endif
+#endif//VECTORS_UTILS_H

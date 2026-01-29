@@ -6,7 +6,7 @@
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 00:39:20 by jaubry--          #+#    #+#             */
-/*   Updated: 2025/10/27 11:57:13 by jaubry--         ###   ########.fr       */
+/*   Updated: 2026/01/29 16:59:13 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,29 @@
 # include <math.h>
 # include "vectors_types.h"
 
-static inline float	vec2_len2(const t_vec2 v)
+static inline float	vec2_dot(const t_vec2 a, const t_vec2 b)
 {
-	return (v.x * v.x + v.y * v.y);
+	return ((a.x * b.x) + (a.y * b.y));
 }
 
-static inline float	vec2_len(const t_vec2 v)
+static inline float	vec2_length2(const t_vec2 v)
 {
-	return (sqrtf(vec2_len2(v)));
+	return ((v.x * v.x) + (v.y * v.y));
 }
 
-static inline float	vec2_dist2(const t_vec2 a, const t_vec2 b)
+static inline float	vec2_length(const t_vec2 v)
 {
-	const t_vec2	d = vec2_sub(a, b);
-
-	return (vec2_len2(d));
+	return (sqrtf(vec2_length2(v)));
 }
 
-static inline float	vec2_dist(const t_vec2 a, const t_vec2 b)
+static inline float	vec2_distance2(const t_vec2 a, const t_vec2 b)
 {
-	return (sqrtf(vec2_dist2(a, b)));
+	return (vec2_length2(vec2_sub(a, b)));
+}
+
+static inline float	vec2_distance(const t_vec2 a, const t_vec2 b)
+{
+	return (sqrtf(vec2_distance2(a, b)));
 }
 
 #endif// VEC2_SPECIAL_H

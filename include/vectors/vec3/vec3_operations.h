@@ -6,7 +6,7 @@
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 08:00:24 by jaubry--          #+#    #+#             */
-/*   Updated: 2025/08/07 01:28:39 by jaubry--         ###   ########lyon.fr   */
+/*   Updated: 2026/01/29 16:25:05 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,6 @@
 # define VEC3_OPERATIONS_H
 
 # include "vectors_types.h"
-
-static inline t_vec3	vec3(const float x, const float y, const float z)
-{
-	return ((t_vec3){{x, y, z}});
-}
 
 static inline t_vec3	vec3_add(const t_vec3 a, const t_vec3 b)
 {
