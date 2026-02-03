@@ -6,7 +6,7 @@
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 07:36:56 by jaubry--          #+#    #+#             */
-/*   Updated: 2026/01/29 21:07:53 by jaubry--         ###   ########.fr       */
+/*   Updated: 2026/02/03 00:19:52 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -294,5 +294,7 @@ int		vector_realloc(t_vector *vector);
 int		set_vector_size(t_vector *vector, size_t size);
 
 void	remove_vector_elem(t_vector *vector, size_t i);
+
+int		vector_copy(t_vector *new, t_vector *src);
 
 #endif

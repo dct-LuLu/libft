@@ -6,7 +6,7 @@
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 08:31:37 by jaubry--          #+#    #+#             */
-/*   Updated: 2026/01/29 20:47:07 by jaubry--         ###   ########.fr       */
+/*   Updated: 2026/01/30 13:25:42 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 # include "vec4i_clamp.h"
 
 # include "vec2_constructors.h"
+# include "vec2_sconstructors.h"
 # include "vec2_operations.h"
 # include "vec2_scalar.h"
 # include "vec2_products.h"
@@ -45,6 +46,7 @@
 # include "vec2_clamp.h"
 
 # include "vec3_constructors.h"
+# include "vec3_sconstructors.h"
 # include "vec3_operations.h"
 # include "vec3_scalar.h"
 # include "vec3_products.h"
@@ -58,6 +60,7 @@
 
 # include "quat_constructors.h"
 # include "vec4_constructors.h"
+# include "vec4_sconstructors.h"
 # include "vec4_operations.h"
 # include "vec4_scalar.h"
 # include "vec4_products.h"

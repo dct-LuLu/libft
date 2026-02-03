@@ -6,7 +6,7 @@
 #    By: jaubry-- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/08 08:59:31 by jaubry--          #+#    #+#              #
-#    Updated: 2025/11/01 16:30:35 by jaubry--         ###   ########.fr        #
+#    Updated: 2026/02/03 00:35:21 by jaubry--         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,8 @@ VECTOR_SRCS	= vector_add.c \
 			  get_vector_value.c \
 			  get_last_vector_value.c \
 			  get_vector_index.c \
-			  free_vector.c
+			  free_vector.c \
+			  vector_copy.c
 VECTOR_SRCS	:= $(addprefix $(VECTOR_DIR)/, $(VECTOR_SRCS))
 
 SRCS		+= $(LIST_SRCS) $(DLIST_SRCS) $(VECTOR_SRCS)

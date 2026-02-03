@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec4_constructors.h                                :+:      :+:    :+:   */
+/*   vector_copy.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/29 16:31:15 by jaubry--          #+#    #+#             */
-/*   Updated: 2026/01/30 13:27:14 by jaubry--         ###   ########.fr       */
+/*   Created: 2026/02/03 00:20:05 by jaubry--          #+#    #+#             */
+/*   Updated: 2026/02/03 00:20:22 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VEC4_CONSTRUCTORS_H
-# define VEC4_CONSTRUCTORS_H
+#include "libft.h"
 
-# include "vectors_types.h"
-
-static inline t_vec4	vec4(const float x, const float y, const float z,
-							const float w)
+int	vector_copy(t_vector *new, t_vector *src)
 {
-	return ((t_vec4){{x, y, z, w}});
+	if (!src || !src->data)
+		return (1);
+	vector_init(new, src->element_size);
+	if (vector_add(new, src->data, src->num_elements) != 0)
+	{
+		free_vector(new);
+		return (1);
+	}
+	return (0);
 }
-
-static inline t_vec4	vec4_set(const float v)
-{
-	return ((t_vec4){{v, v, v, v}});
-}
-
-#endif//VEC4_CONSTRUCTORS_H

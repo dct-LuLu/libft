@@ -6,7 +6,7 @@
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:44:59 by jaubry--          #+#    #+#             */
-/*   Updated: 2026/01/29 21:07:07 by jaubry--         ###   ########.fr       */
+/*   Updated: 2026/01/30 13:03:47 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "vectors_types.h"
 # include "math_utils.h"
+# include <stdlib.h>
 # include <stdbool.h>
 
 static inline t_vec2i	vec2i_max(const t_vec2i a, const t_vec2i b)

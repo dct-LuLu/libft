@@ -6,117 +6,97 @@
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 22:25:13 by jaubry--          #+#    #+#             */
-/*   Updated: 2026/01/29 22:25:50 by jaubry--         ###   ########.fr       */
+/*   Updated: 2026/02/02 23:17:00 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MAT3_JACOBI_OPS_H
 # define MAT3_JACOBI_OPS_H
 
-# include <math.h>
-# include "matrices_types.h"
-# include "vec2i_constructors.h"
-
-typedef struct s_mat3_jacobi_rot
-{
-	t_mat3_pivot	p;     /* p.x = k, p.y = l */
-	float			amax;  /* |a[k][l]| */
-	float			t;
-	float			s;
-	float			tau;
-}	t_mat3_jacobi_rot;
+# include "mat3_jacobi_params.h"
 
 /*
-	Finds pivot (k,l) = biggest off-diagonal magnitude among (0,1),(0,2),(1,2).
+	Applies the 2D Jacobi “plane rotation” update to a pair (x,y),
+	used to rotate two coupled coefficients consistently.
 */
-static inline t_mat3_pivot	mat3_jacobi_pivot(const t_mat3 a)
+static inline void	mat3_jacobi_rot2f(float *x, float *y,
+	const t_jacobi_rot_params *r)
 {
-	t_mat3_pivot	p;
-	float			best;
+	float	x0;
+	float	y0;
 
-	p = vec2i(0, 1);
-	best = fabsf(a.m[0][1]);
-	if (fabsf(a.m[0][2]) > best)
-	{
-		best = fabsf(a.m[0][2]);
-		p = vec2i(0, 2);
-	}
-	if (fabsf(a.m[1][2]) > best)
-		p = vec2i(1, 2);
-	return (p);
-}
-
-static inline float	mat3_jacobi_t(const float diff, const float a_kl)
-{
-	float	phi;
-	float	t;
-
-	if (fabsf(a_kl) < fabsf(diff) * 1.0e-36f)
-		return (a_kl / diff);
-	phi = diff / (2.0f * a_kl);
-	t = 1.0f / (fabsf(phi) + sqrtf(phi * phi + 1.0f));
-	if (phi < 0.0f)
-		t = -t;
-	return (t);
+	x0 = *x;
+	y0 = *y;
+	*x = x0 - r->s * (y0 + r->tau * x0);
+	*y = y0 + r->s * (x0 - r->tau * y0);
 }
 
 /*
-	Builds (t,s,tau) + pivot + amax from current matrix.
+	Updates matrix A for one index i (i != k,l): rotates (A[i][k], A[i][l])
+	and writes back symmetrically to keep A symmetric.
 */
-static inline t_mat3_jacobi_rot	mat3_jacobi_rot(const t_mat3 a)
+static inline void	mat3_jacobi_apply_a_index(t_mat3 *a,
+	const t_jacobi_rot_params *r, const int i)
 {
-	t_mat3_jacobi_rot	r;
-	float				c;
-	float				diff;
+	const int	k = r->p.x;
+	const int	l = r->p.y;
+	float		x;
+	float		y;
 
-	r.p = mat3_jacobi_pivot(a);
-	r.amax = fabsf(a.m[r.p.x][r.p.y]);
-	diff = a.m[r.p.y][r.p.y] - a.m[r.p.x][r.p.x];
-	r.t = mat3_jacobi_t(diff, a.m[r.p.x][r.p.y]);
-	c = 1.0f / sqrtf(r.t * r.t + 1.0f);
-	r.s = r.t * c;
-	r.tau = r.s / (1.0f + c);
-	return (r);
+	x = a->m[i][k];
+	y = a->m[i][l];
+	mat3_jacobi_rot2f(&x, &y, r);
+	mat3_set_sym(a, i, k, x);
+	mat3_set_sym(a, i, l, y);
 }
 
 /*
-	Applies one Jacobi rotation to:
-	- a: symmetric matrix being diagonalized
-	- p: eigenvector accumulator
+	Updates eigenvector accumulator P for one row i:
+	rotates the two columns (k,l) so P accumulates the total rotation.
+*/
+static inline void	mat3_jacobi_apply_p_index(t_mat3 *p,
+	const t_jacobi_rot_params *r, const int i)
+{
+	const int	k = r->p.x;
+	const int	l = r->p.y;
+	float		x;
+	float		y;
+
+	x = p->m[i][k];
+	y = p->m[i][l];
+	mat3_jacobi_rot2f(&x, &y, r);
+	p->m[i][k] = x;
+	p->m[i][l] = y;
+}
+
+/*
+	Applies one Jacobi step: 
+		zeros A[k][l],
+		adjusts diagonals,
+		updates the rest of rows/cols (k,l),
+		and rotates P the same way
 */
 static inline void	mat3_jacobi_apply(t_mat3 *a, t_mat3 *p,
-	const t_mat3_jacobi_rot r)
+	const t_jacobi_rot_params r)
 {
 	int		i;
-	float	x;
-	float	y;
+	float	apq;
 
-	x = a->m[r.p.x][r.p.y];
-	a->m[r.p.x][r.p.y] = 0.0f;
-	a->m[r.p.y][r.p.x] = 0.0f;
-	a->m[r.p.x][r.p.x] -= r.t * x;
-	a->m[r.p.y][r.p.y] += r.t * x;
+	apq = a->m[r.p.x][r.p.y];
+	mat3_set_sym(a, r.p.x, r.p.y, 0.0f);
+	a->m[r.p.x][r.p.x] = a->m[r.p.x][r.p.x] - r.t * apq;
+	a->m[r.p.y][r.p.y] = a->m[r.p.y][r.p.y] + r.t * apq;
 	i = 0;
 	while (i < 3)
 	{
 		if (i != r.p.x && i != r.p.y)
-		{
-			x = a->m[i][r.p.x];
-			y = a->m[i][r.p.y];
-			a->m[i][r.p.x] = x - r.s * (y + r.tau * x);
-			a->m[i][r.p.y] = y + r.s * (x - r.tau * y);
-			a->m[r.p.x][i] = a->m[i][r.p.x];
-			a->m[r.p.y][i] = a->m[i][r.p.y];
-		}
+			mat3_jacobi_apply_a_index(a, &r, i);
 		i++;
 	}
 	i = 0;
 	while (i < 3)
 	{
-		x = p->m[i][r.p.x];
-		y = p->m[i][r.p.y];
-		p->m[i][r.p.x] = x - r.s * (y + r.tau * x);
-		p->m[i][r.p.y] = y + r.s * (x - r.tau * y);
+		mat3_jacobi_apply_p_index(p, &r, i);
 		i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 16:26:55 by jaubry--          #+#    #+#             */
-/*   Updated: 2026/01/29 16:38:18 by jaubry--         ###   ########.fr       */
+/*   Updated: 2026/01/30 13:24:09 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,26 +18,6 @@
 static inline t_vec2	vec2(const float x, const float y)
 {
 	return ((t_vec2){{x, y}});
-}
-
-static inline t_vec2	vec2_zero(void)
-{
-	return ((t_vec2){{0.f, 0.f}});
-}
-
-static inline t_vec2	vec2_pinf(void)
-{
-	return ((t_vec2){{INFINITY, INFINITY}});
-}
-
-static inline t_vec2	vec2_ninf(void)
-{
-	return ((t_vec2){{-INFINITY, -INFINITY}});
-}
-
-static inline t_vec2	vec2_err(void)
-{
-	return ((t_vec2){{-1.f, -1.f}});
 }
 
 static inline t_vec2	vec2_set(const float v)

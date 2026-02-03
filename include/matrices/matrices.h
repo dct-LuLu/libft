@@ -6,7 +6,7 @@
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 16:22:32 by jaubry--          #+#    #+#             */
-/*   Updated: 2026/01/29 22:27:04 by jaubry--         ###   ########.fr       */
+/*   Updated: 2026/02/02 23:17:14 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@
 # include "mat3_utils.h"
 # include "mat3_vec3.h"
 # include "mat3_jacobi_ops.h"
+# include "mat3_jacobi_params.h"
 
 #endif//MATRICES_H
