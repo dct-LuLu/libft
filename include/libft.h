@@ -283,10 +283,10 @@ typedef struct s_vector
 void	vector_init(t_vector *vector, size_t element_size);
 int		vector_add(t_vector *vector, void *element, size_t elem_count);
 
-void	*get_vector_value(t_vector *vector, size_t i);
-void	*get_last_vector_value(t_vector *vector);
+void	*get_vector_value(const t_vector *vector, const size_t i);
+void	*get_last_vector_value(const t_vector *vector);
 
-size_t	get_vector_index(t_vector *vector, void *el);
+size_t	get_vector_index(const t_vector *vector, const void *el);
 
 void	free_vector(t_vector *vector);
 int		vector_realloc(t_vector *vector);

@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-inline size_t	get_vector_index(t_vector *vector, void *el)
+inline size_t	get_vector_index(const t_vector *vector, const void *el)
 {
 	size_t	len;
 

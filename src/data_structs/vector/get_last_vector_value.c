@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-inline void	*get_last_vector_value(t_vector *vector)
+inline void	*get_last_vector_value(const t_vector *vector)
 {
 	return (get_vector_value(vector, vector->num_elements - 1));
 }
