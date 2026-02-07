@@ -6,7 +6,7 @@
 #    By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/27 01:19:17 by jaubry--          #+#    #+#              #
-#    Updated: 2026/01/30 13:16:12 by jaubry--         ###   ########.fr        #
+#    Updated: 2026/02/07 02:44:46 by jaubry--         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,7 @@ IFLAGS		= $(addprefix -I,$(INCLUDES))
 
 VFLAGS		= $(addprefix -D,$(VARS))
 
-CFLAGS		+= $(INSPECT_FLAGS) $(PROFILE_FLAGS) $(FFLAGS) $(VFLAGS)
+CFLAGS		+= $(SANITIZE_FLAGS) $(INSPECT_FLAGS) $(PROFILE_FLAGS) $(FFLAGS) $(VFLAGS)
 CF			= $(CC) $(CFLAGS) $(IFLAGS)
 
 AR          = $(if $(findstring -flto,$(FFLAGS)),$(FAST_AR),$(STD_AR))
