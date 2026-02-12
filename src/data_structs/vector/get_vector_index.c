@@ -6,13 +6,13 @@
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 16:25:52 by jaubry--          #+#    #+#             */
-/*   Updated: 2025/11/01 16:31:36 by jaubry--         ###   ########.fr       */
+/*   Updated: 2026/02/12 08:58:01 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-inline size_t	get_vector_index(const t_vector *vector, const void *el)
+ssize_t	get_vector_index(const t_vector *vector, const void *el)
 {
 	size_t	len;
 

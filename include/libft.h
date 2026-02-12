@@ -6,7 +6,7 @@
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 07:36:56 by jaubry--          #+#    #+#             */
-/*   Updated: 2026/02/04 02:27:17 by jaubry--         ###   ########.fr       */
+/*   Updated: 2026/02/12 08:16:09 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -286,7 +286,7 @@ int		vector_add(t_vector *vector, void *element, size_t elem_count);
 void	*get_vector_value(const t_vector *vector, const size_t i);
 void	*get_last_vector_value(const t_vector *vector);
 
-size_t	get_vector_index(const t_vector *vector, const void *el);
+ssize_t	get_vector_index(const t_vector *vector, const void *el);
 
 void	free_vector(t_vector *vector);
 int		vector_realloc(t_vector *vector);
