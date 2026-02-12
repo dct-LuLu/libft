@@ -6,7 +6,7 @@
 #    By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/27 01:19:17 by jaubry--          #+#    #+#              #
-#    Updated: 2026/02/12 06:33:03 by jaubry--         ###   ########.fr        #
+#    Updated: 2026/02/12 09:46:21 by jaubry--         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,8 @@ XCERRCAL	= $(XCERRCALDIR)/libxcerrcal.a
 # Variables
 MINIRT_MODE	= 0
 
-VARS		= MINIRT_MODE=$(MINIRT_MODE)
+VARS		= MINIRT_MODE=$(MINIRT_MODE) \
+			  CL_TARGET_OPENCL_VERSION=$(CL_TARGET_OPENCL_VERSION)
 
 # Compiler and flags
 CC			?= cc
