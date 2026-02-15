@@ -6,7 +6,7 @@
 /*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 07:36:56 by jaubry--          #+#    #+#             */
-/*   Updated: 2026/02/12 08:16:09 by jaubry--         ###   ########.fr       */
+/*   Updated: 2026/02/15 05:26:39 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,11 @@ char	*dfreejoin(char *s1, char *s2);
 char	*ft_strjoin_all(size_t	str_nb, ...);
 
 /* --------------------------- String format utils -------------------------- */
+
+# define FLOAT_PRECISION 6
+
+size_t	strf_putfloat_g(char *output, size_t len, double nb, size_t precision);
+size_t	strf_putfloat(char *output, size_t len, double nb, size_t precision);
 
 size_t	strf_putnbr(char *output, size_t len, long int nb);
 
