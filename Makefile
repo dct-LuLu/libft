@@ -6,7 +6,7 @@
 #    By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/27 01:19:17 by jaubry--          #+#    #+#              #
-#    Updated: 2026/02/12 09:46:21 by jaubry--         ###   ########.fr        #
+#    Updated: 2026/02/16 20:03:57 by jaubry--         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,34 +69,26 @@ include $(SRCDIR)/srcs.mk
 OBJS		= $(addprefix $(OBJDIR)/, $(notdir $(SRCS:.c=.o)))
 DEPS		= $(addprefix $(DEPDIR)/, $(notdir $(SRCS:.o=.d)))
 
-
-all:		$(NAME)
-fast:		$(NAME)
-debug:		$(NAME)
-inspect:	$(NAME)
-profile:	$(NAME)
-san-mem:	$(NAME)
-san-leak:	$(NAME)
-san-ub:		$(NAME)
+include $(ROOTDIR)/mkidir/make_rules.mk
 
 $(NAME): $(XCERRCAL) $(OBJS)
 	$(call ar-msg)
-	@$(AR) $(ARFLAGS) $@ $^
+ifeq ($(VERBOSE),1)
+	$(AR) $(ARFLAGS) $@ $(OBJS)
+else
+	@$(AR) $(ARFLAGS) $@ $(OBJS)
+endif
 ifeq ($(FAST),1)
+ifeq ($(VERBOSE),1)
+	$(RANLIB) $@
+else
 	@$(RANLIB) $@
+endif
 endif
 	$(call ar-finish-msg)
 
 $(XCERRCAL):
 	@$(MAKE) -s -C $(XCERRCALDIR) $(RULE) ROOTDIR=../..
-
-$(OBJDIR)/%.o: %.c | buildmsg $(OBJDIR) $(DEPDIR)
-	$(call lib-compile-obj-msg)
-	@$(CF) $(DFLAGS) -c $< -o $@
-
-$(OBJDIR) $(DEPDIR):
-	$(call create-dir-msg)
-	@mkdir -p $@
 
 buildmsg:
 ifneq ($(shell [ -f $(NAME) ] && echo exists),exists)
@@ -114,8 +106,6 @@ help:
 	@echo
 	@echo -e "\tprint-%\t\t\t\t: Prints makefile variable content when replacing '%'"
 
-print-% : ; $(info $* is a $(flavor $*) variable set to [$($*)]) @true
-
 clean:
 	@$(MAKE) -s -C $(XCERRCALDIR) clean ROOTDIR=../..
 	$(call rm-obj-msg)
@@ -128,17 +118,7 @@ fclean:
 	$(call rm-lib-msg)
 	@rm -f $(NAME)
 
-re:			fclean all
-refast:		fclean fast
-redebug:	fclean debug
-reinspect:	fclean inspect
-reprofile:	fclean profile
-resan-mem:	fclean san-mem
-resan-leak:	fclean san-leak
-resan-ub:	fclean san-ub
-
 -include $(DEPS)
 
 .PHONY: all clean fclean
 .PHONY: help buildmsg
-.PHONY: re refast redebug reinspect reprofile resan-mem resan-leak resan-ub
