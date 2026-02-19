@@ -6,14 +6,14 @@
 /*   By: jaubry-- <jaubry--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/15 05:23:21 by jaubry--          #+#    #+#             */
-/*   Updated: 2026/02/15 05:27:08 by jaubry--         ###   ########.fr       */
+/*   Updated: 2026/02/19 15:46:24 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 size_t	strf_putfloat_raw(char *output, size_t len, double nb,
-		size_t precision);
+			size_t precision);
 
 static size_t	strf_trim_zeros(char *output, size_t write_len)
 {
