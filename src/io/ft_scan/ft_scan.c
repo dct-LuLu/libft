@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_scan.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pabellis <pabellis@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/16 00:11:43 by pabellis          #+#    #+#             */
-/*   Updated: 2025/12/23 19:02:21 by jaubry--         ###   ########.fr       */
+/*   Created: 2026/02/20 16:31:07 by jaubry--          #+#    #+#             */
+/*   Updated: 2026/02/20 16:31:11 by jaubry--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,30 @@ int					parse_type(va_list *args, const char **line,
 						int line_num, const char *format);
 static int			verif_char(const char *format,
 						const char **line, int line_num);
-static const char	*skip_range(const char *format);
+const char			*skip_range(const char *format);
 
-void	scan_optional_arg(va_list *args, const char **format,
-		const char **line)
+static inline int	handle_optional_token(
+	va_list *copy, const char **format, const char **line)
+{
+	if ((*format)[0] && (*format)[1] == '*')
+	{
+		skip_wildcard(line, **format);
+		++*format;
+	}
+	else if (**format == '%')
+	{
+		++*format;
+		if (parse_type(copy, line, -1, *format) == -1)
+			return (-1);
+		*format = skip_range(*format);
+	}
+	else if (verif_char(*format, line, -1) == -1)
+		return (-1);
+	return (0);
+}
+
+void	scan_optional_arg(
+	va_list *args, const char **format, const char **line)
 {
 	const char	*line_backup;
 	va_list		copy;
@@ -32,22 +52,7 @@ void	scan_optional_arg(va_list *args, const char **format,
 	va_copy(copy, *args);
 	while (**format && **format != ')')
 	{
-		if ((*format)[0] && (*format)[1] == '*')
-		{
-			skip_wildcard(line, **format);
-			++*format;
-		}
-		else if (**format == '%')
-		{
-			++*format;
-			if (parse_type(&copy, line, -1, *format) == -1)
-			{
-				*line = line_backup;
-				break ;
-			}
-			*format = skip_range(*format);
-		}
-		else if (verif_char(*format, line, -1) == -1)
+		if (handle_optional_token(&copy, format, line) == -1)
 		{
 			*line = line_backup;
 			break ;
@@ -83,13 +88,6 @@ int	ft_scan(int line_num, const char *format, const char *line, ...)
 		++format;
 	}
 	return (0);
-}
-
-static const char	*skip_range(const char *format)
-{
-	if (format[1] == '[')
-		format = ft_strchr(format, ']');
-	return (format);
 }
 
 static int	verif_char(const char *format, const char **line, int line_num)
