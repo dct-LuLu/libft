@@ -6,7 +6,7 @@
 #    By: jaubry-- <jaubry--@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/27 01:19:17 by jaubry--          #+#    #+#              #
-#    Updated: 2026/02/16 20:03:57 by jaubry--         ###   ########.fr        #
+#    Updated: 2026/09/06 21:43:40 by jaubry--         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -88,12 +88,7 @@ endif
 	$(call ar-finish-msg)
 
 $(XCERRCAL):
-	@$(MAKE) -s -C $(XCERRCALDIR) $(RULE) ROOTDIR=../..
-
-buildmsg:
-ifneq ($(shell [ -f $(NAME) ] && echo exists),exists)
-	$(call lib-build-msg)
-endif
+	@$(MAKE) -s -C $(XCERRCALDIR) $(RULE) $(VARS) ROOTDIR=../..
 
 help:
 	@echo "Available targets:"
@@ -117,8 +112,3 @@ fclean:
 	@rm -rf $(OBJDIR) $(DEPDIR)
 	$(call rm-lib-msg)
 	@rm -f $(NAME)
-
--include $(DEPS)
-
-.PHONY: all clean fclean
-.PHONY: help buildmsg
